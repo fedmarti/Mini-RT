@@ -1,4 +1,5 @@
-mini-rt
+miniRT
 */*.o
 */*.vscode
 */*.txt
+*/*lib*.a
