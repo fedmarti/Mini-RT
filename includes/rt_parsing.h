@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   rt_parsing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/22 20:19:56 by fedmarti         ###   ########.fr       */
+/*   Created: 2024/01/22 20:43:52 by fedmarti          #+#    #+#             */
+/*   Updated: 2024/01/23 00:11:12 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef RT_PARSING_H
+# define RT_PARSING_H
 
-# include "shapes.h"
-# include "shapes.h"
-# include "scene.h"
-# define WIN_WIDTH 720u
-# define WIN_HEIGHT 480u
-# define RAY_LENGTH 1000.0F
+# include "libft.h"
+
+enum	e_token_type
+{
+	NumberSingle,
+	NumberTriplet,
+	ObjType,
+	Garbage,
+	eNull
+};
+
+typedef struct s_token
+{
+	char 				*str;
+	enum e_token_type	type;
+}	t_token;
+
+t_list	*tokenize_file(char **file);
+t_token	*new_token(char **file, int *i, int *j);
 
 #endif

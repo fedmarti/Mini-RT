@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/22 20:19:56 by fedmarti         ###   ########.fr       */
+/*   Created: 2024/01/22 21:32:39 by fedmarti          #+#    #+#             */
+/*   Updated: 2024/01/22 21:36:16 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-# include "shapes.h"
-# include "shapes.h"
-# include "scene.h"
-# define WIN_WIDTH 720u
-# define WIN_HEIGHT 480u
-# define RAY_LENGTH 1000.0F
-
-#endif
+int ft_isspace(int c)
+{
+	return ((c == ' ') \
+	|| (c == '\t') || (c == '\n') || (c == '\v') || (c == '\f') || (c == '\r'));
+}

@@ -6,7 +6,7 @@
 #    By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 15:01:24 by fedmarti          #+#    #+#              #
-#    Updated: 2023/10/10 21:57:14 by fedmarti         ###   ########.fr        #
+#    Updated: 2024/01/22 21:39:31 by fedmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SOURCES := ft_atoi.c \
 	ft_substr.c \
 	ft_calloc.c \
 	ft_strnstr.c \
+	ft_isspace.c \
 	ft_abs.c \
 	ft_abs_d.c \
 	ft_sign.c \

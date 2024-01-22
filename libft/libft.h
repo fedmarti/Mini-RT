@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 22:08:09 by fedmarti          #+#    #+#             */
-/*   Updated: 2023/10/10 21:58:55 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:39:10 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,9 @@ char	*ft_copy_up_to(char *str, char *stop_charset);
 //reads file returning one line each call
 //returns null when there's nothing more to read
 char	*get_next_line(int fd);
+
+//returns true if c is either ' ', '\\t', '\\n', '\\v', '\\r', '\\f'
+int		ft_isspace(int c);
 
 /*end of additional stuff*/
 
