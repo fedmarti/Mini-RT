@@ -1,8 +1,13 @@
 NAME=miniRT
 
-SRC=test.c
+SRC=main.c \
+	window.c \
+	new_token.c \
+	scene.c \
+	parsing.c \
+	tokenizer.c \
 
-MLX=./minilibx_linux/libmlx.a
+MLX=./minilibx-linux/libmlx.a
 
 LIBFT=./libft/libft.a
 
@@ -24,17 +29,15 @@ strip_archive = $(patsubst lib%.a,%,$(notdir $1))
 
 ##
 #defines libraries that need to be linked at compile time
-LIBRARIES = $(LIBFT) $(MLX) m
+LIBRARIES = $(LIBFT) $(MLX) -lm -lXext -lX11
 
-##
-#defines the flags for each library
-LINKS= $(addprefix -L, $(dir $(LIBRARIES))) $(addprefix -l, $(call strip_archive, $(LIBRARIES)))
+LINKS = $(addprefix -L, $(dir $(LIBFT) $(MLX))) $(LIBRARIES)
 
 ##
 #flags with path for the headers
 INCLUDES=-I./includes -I$(dir $(LIBFT)) -I$(dir $(MLX))
 
-CFLAGS=-Wall -Wextra -Werror
+#CFLAGS=-Wall -Wextra -Werror commentato per ora
 
 all: $(NAME)
 
