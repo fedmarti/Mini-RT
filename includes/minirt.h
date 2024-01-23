@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/23 01:38:48 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/23 18:05:42 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 # include <fcntl.h>
 # include <png.h>
 # include <stdbool.h>
@@ -25,9 +26,10 @@
 # include "shapes.h"
 # include "scene.h"
 # include "window.h"
+# include "mouse.h"
 
-# define WIN_WIDTH 720u
-# define WIN_HEIGHT 480u
+# define WIN_WIDTH 720.0f
+# define WIN_HEIGHT 480.0f
 # define RAY_LENGTH 1000.0F
 
 #endif
