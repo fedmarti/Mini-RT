@@ -1,6 +1,9 @@
 NAME=miniRT
 
-SRC=test.c
+SRC= main.c \
+mouse.c \
+window.c \
+keys.c \
 
 MLX=./minilibx-linux/libmlx.a
 
@@ -34,7 +37,7 @@ LINKS= $(addprefix -L, $(dir $(LIBRARIES))) $(addprefix -l, $(call strip_archive
 #flags with path for the headers
 INCLUDES=-I./includes -I$(dir $(LIBFT)) -I$(dir $(MLX))
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS= #-Wall -Wextra -Werror
 
 all: $(NAME)
 

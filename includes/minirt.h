@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/23 18:05:42 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:46:32 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@
 # include <png.h>
 # include <stdbool.h>
 # include <stdlib.h>
-# include <stdlib.h>
 # include <unistd.h>
 # include "../minilibx-linux/mlx.h"
 # include "shapes.h"
 # include "scene.h"
-# include "window.h"
 # include "mouse.h"
+# include "keys.h"
+# include "window.h"
 
-# define WIN_WIDTH 720.0f
-# define WIN_HEIGHT 480.0f
+
 # define RAY_LENGTH 1000.0F
 
 #endif

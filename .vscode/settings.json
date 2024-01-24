@@ -4,6 +4,7 @@
 		"mouse.h": "c",
 		"window.h": "c",
 		"shapes.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"minirt.h": "c"
 	}
 }

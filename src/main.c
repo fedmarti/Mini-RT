@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/23 01:39:50 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:54:37 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 int	main(int argc, char **argv)
 {
-	t_scene	*scene;
-	t_window main_window;
+	t_scene		*scene;
+	t_general	general;
 
+	general = (t_general){0};
 	if (argc != 2)
 	{
 		write (2, "Wrong number of arguments\n", 26);
@@ -29,7 +30,8 @@ int	main(int argc, char **argv)
 		write (2, "Errors while parsing .rt file\n", 30);
 		return (1);
 	}
-	main_window = *load_window(&main_window);
-	mlx_loop(main_window.init_ptr);
+	general.program = *load_window(&general.program, argv[1], &general.keys_status);
+	mlx_mouse_hook(general.program.window, on_click_event, &general.mouse);
+	mlx_loop(general.program.init_ptr);
 	free(scene);
 }
