@@ -2,9 +2,8 @@
 #define WINDOW_H
 
 //KEYPRESS MACRO
-# define ESC 65307
-# define LEFT_CLK 1
-# define RIGHT_CLK 2
+# define WIN_WIDTH 720.0f
+# define WIN_HEIGHT 480.0f
 
 typedef struct s_window
 {
@@ -13,6 +12,14 @@ typedef struct s_window
 	float	aspectratio;
 } t_window;
 
-t_window *load_window(t_window *main_window);
+typedef struct s_general_info
+{
+	t_mouse mouse;
+	t_keys keys_status;
+	t_window program;
+} t_general;
+
+t_window *load_window(t_window *main_window, char *title, t_keys *keys_status);
+int close_x();
 
 #endif

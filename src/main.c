@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/24 21:39:42 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:48:55 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_scene		*scene;
 	t_window	main_window;
 
+	general = (t_general){0};
 	if (argc != 2)
 	{
 		write (2, "Wrong number of arguments\n", 26);
