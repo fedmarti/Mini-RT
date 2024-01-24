@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/23 01:39:50 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/24 21:39:42 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_scene	*scene;
-	t_window main_window;
+	t_scene		*scene;
+	t_window	main_window;
 
 	if (argc != 2)
 	{
@@ -31,5 +31,5 @@ int	main(int argc, char **argv)
 	}
 	main_window = *load_window(&main_window);
 	mlx_loop(main_window.init_ptr);
-	free(scene);
+	free_scene(scene);
 }
