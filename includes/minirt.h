@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/24 21:47:33 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:00:11 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "mlx.h"
-# include "shapes.h"
-# include "scene.h"
+# include "objects.h"
 # include "mouse.h"
 # include "keys.h"
 # include "window.h"
 
+void	free_scene(t_scene *scene);
 
 # define RAY_LENGTH 1000.0F
 

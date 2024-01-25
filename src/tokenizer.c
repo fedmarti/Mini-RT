@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:41:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/22 22:19:16 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:03:32 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "rt_parsing.h"
 
-static void	free_token(void *tok)
+void	free_token(void *tok)
 {
 	if (((t_token *)tok)->str)
 		free(((t_token *)tok)->str);
@@ -31,15 +31,13 @@ void	next_char(char **file, int *i, int *j)
 	}
 }
 
-
-
 t_list	*tokenize_file(char **file)
 {
 	t_list	*tokens;
 	int		i;
 	int		j;
 	t_token	*newtok;
-	
+
 	tokens = NULL;
 	i = 0;
 	j = 0;
@@ -55,7 +53,7 @@ t_list	*tokenize_file(char **file)
 				ft_lstclear(&tokens, free_token);
 				return (NULL);
 			}
-			ft_lstadd_back(&tokens, newtok);
+			ft_lstadd_back(&tokens, ft_lstnew(newtok));
 		}
 	}
 	return (tokens);
