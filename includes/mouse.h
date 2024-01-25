@@ -11,10 +11,10 @@
 enum MouseEvents
 {
     pressed_left = 1,
-    pressed_right = 2,
-    pressed_middle = 3,
-    scroll_up = 4,
-    scroll_down = 5
+    pressed_right,
+    pressed_middle,
+    scroll_up,
+    scroll_down
 };
 
 typedef struct s_mouse

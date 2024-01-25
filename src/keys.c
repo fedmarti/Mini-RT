@@ -1,50 +1,34 @@
 #include "../includes/minirt.h"
-int handle_keypress(int pressedKey, t_keys *status)
+
+int handle_keypress(int pressedKey, t_general *general)
 {
 	if(pressedKey == SPACE)
 	{
-		if(status->help_info == false)
-			status->help_info = true;
+		if(general->help_info == false)
+			general->help_info = true;
 		else
-			status->help_info = false;
+			general->help_info = false;
 		return(0);
 	}
-	if (pressedKey == ESC)
+	else if (pressedKey == ESC)
 		close_x();
 	else if(pressedKey == ALT_KEY)
-		status->ctrl = true;
+		general->on_hold = Alt;
 	else if(pressedKey == SHIFT_LEFT_KEY)
-		status->shift = true;
-	// else if(pressedKey == UP)
-	// 	status->arr_up = true;
-	// else if(pressedKey == DOWN)
-	// 	status->arr_down = true;
-	// else if(pressedKey == LEFT)
-	// 	status->arr_left = true;
-	// else if(pressedKey == RIGHT)
-	// 	status->arr_right = true;
-	else
-		status->count_pressed --;
-	status->count_pressed++;
-	printf("%d\n", status->count_pressed);
-	printf("%d\n", pressedKey);
-	fflush(stdout);
+		general->on_hold = Shift;
 	return(0);
 }
 
 
-int handle_keyrelease (int releasedKey, t_keys *status)
+int handle_keyrelease (int releasedKey, t_general *general)
 {
-	if (releasedKey == ESC)
-		close_x();
-	else if(releasedKey == ALT_KEY)
-		status->ctrl = false;
-	else if(releasedKey == SHIFT_LEFT_KEY)
-		status->shift = false;
-
-	if ((releasedKey == ALT_KEY || releasedKey == SHIFT_LEFT_KEY))
-    status->count_pressed--;
-	
-	printf("%d", status->count_pressed);
-	fflush(stdout);
+	if(releasedKey == ALT_KEY && general->on_hold == Alt)
+	{
+		general->on_hold = Null;
+	}
+	else if(releasedKey == SHIFT_LEFT_KEY && general->on_hold == Shift)
+	{
+		general->on_hold = Null;
+	}
+	return(0);
 }
