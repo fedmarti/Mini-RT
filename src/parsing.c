@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/25 21:27:23 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:50:07 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	is_rt_file(char *filename)
 
 //matches token->str with the possible object type string
 //initializes types_to_match accordingly
+
 static int	get_types_to_match(enum e_token_type *ttm, t_token *token)
 {
 	if (!ft_strncmp(token->str, AMBIENT_LIGTHING, INT_MAX))
