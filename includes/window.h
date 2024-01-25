@@ -22,5 +22,8 @@ typedef struct s_general_info
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);
 int close_x();
+int handle_keyrelease (int releasedKey, t_general *general);
+int handle_keypress(int pressedKey, t_general *general);
 
-#endif<
+
+#endif

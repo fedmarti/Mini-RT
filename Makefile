@@ -8,9 +8,9 @@ parse_object.c \
 parse_shapes.c \
 parsing.c \
 scene.c \
-tokenizer.c
-# keys.c \
-# window.c \
+tokenizer.c \
+keys.c \
+window.c \
 
 MLX=./minilibx-linux/libmlx.a
 

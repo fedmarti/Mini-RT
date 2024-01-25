@@ -17,7 +17,4 @@ enum on_hold
 	Alt
 };
 
-int handle_keyrelease (int releasedKey, t_general *general);
-int handle_keypress(int pressedKey, t_general *general);
-
 #endif
