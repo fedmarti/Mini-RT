@@ -2,7 +2,6 @@
 #define KEYS_H
 
 #define ESC 65307
-
 #define UP 65362
 #define DOWN 65364
 #define LEFT 65361
@@ -11,21 +10,14 @@
 #define SHIFT_LEFT_KEY 65505
 #define ALT_KEY 65513
 
-
-
-typedef struct s_keys 
+enum on_hold
 {
-	bool ctrl;
-	bool shift;
-	bool arr_up;
-	bool arr_down;
-	bool arr_left;
-	bool arr_right;
-	bool help_info;
-	unsigned int count_pressed;
-} t_keys;
+	Null = 0,
+	Shift,
+	Alt
+};
 
-int handle_keyrelease (int releasedKey, t_keys *status);
-int handle_keypress(int pressedKey, t_keys *status);
+int handle_keyrelease (int releasedKey, t_general *general);
+int handle_keypress(int pressedKey, t_general *general);
 
 #endif
