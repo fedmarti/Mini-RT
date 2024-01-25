@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/25 23:02:52 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/25 23:59:29 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 {
 	t_scene		*scene;
 	t_window	main_window;
-	t_general general;
+	t_general	general;
 
 	general = (t_general){0};
 	if (argc != 2)
@@ -80,8 +80,8 @@ int	main(int argc, char **argv)
 		write (2, "Errors while parsing .rt file\n", 30);
 		return (1);
 	}
-	main_window = *load_window(&main_window, argv[1], &general);
-	mlx_loop(main_window.init_ptr);
 	print_scene_content(scene);
+	main_window = *load_window(&main_window, argv[1], &general); //stringa allocata in stack su windows "MiniRT: Nomefile(senza path. senza.rt)"
+	mlx_loop(main_window.init_ptr);
 	free_scene(scene);
 }

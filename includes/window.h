@@ -10,6 +10,7 @@ typedef struct s_window
 	void	*init_ptr;
 	void	*window;
 	float	aspectratio;
+	char	win_name[30];
 } t_window;
 
 typedef struct s_general_info
