@@ -26,11 +26,4 @@ enum arrow
 	Down
 };
 
-void left_on();
-void up_on();
-void right_on();
-void down_on();
-
-extern void (*handlers[])(void);
-
 #endif

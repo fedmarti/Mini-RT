@@ -1,23 +1,5 @@
 #include "../includes/minirt.h"
-
-void left_on()
-{
-	printf("left!\n");
-}
-void up_on()
-{
-	printf("up!\n");
-}
-void right_on()
-{
-	printf("right!\n");
-}
-void down_on()
-{
-	printf("down!\n");
-}
-
-void (*handlers[])(void) = {left_on, up_on ,right_on, down_on};
+#include <mlx_int.h>
 
 int handle_keypress(int pressedKey, t_general *general)
 {
@@ -32,15 +14,16 @@ int handle_keypress(int pressedKey, t_general *general)
 		return(0);
 	}
 	else if (pressedKey == ESC)
-		close_x();
+		close_x(general);
 	else if(pressedKey == ALT_KEY)
 		general->special_key = Alt;
 	else if(pressedKey == SHIFT_LEFT_KEY)
 		general->special_key = Shift;
 	if(pressedKey >= LEFT && pressedKey <= DOWN)
 	{
+		XAutoRepeatOff(((t_xvar *)(general->program.init_ptr))->display);
+		// mlx_do_key_autorepeatoff(general->program.init_ptr);
 		general->arrow = pressedKey;
-		(*handlers[general->arrow - 65361])();
 	}
 	return(0);
 }
@@ -55,7 +38,8 @@ int handle_keyrelease (int releasedKey, t_general *general)
 	else if(general->arrow == (enum arrow)releasedKey)
 	{
 		general->arrow = Null_arrow;
-		printf("release\n");
+		XAutoRepeatOn(((t_xvar *)(general->program.init_ptr))->display);
+		printf("RELEASED!! LIBERO\n");
 	}
 	return(0);
 }
