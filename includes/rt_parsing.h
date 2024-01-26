@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:43:52 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 19:05:45 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 23:22:28 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@
 # include "symbols.h"
 # define TTM_SIZE 6
 
+//the enums vals are chosen in such a way that any one type is greater
+//than any more specific versions of the same type
+//example: NumberSingleRatio is also a nsFov, nsNormal and NumberSingle 
 enum	e_token_type
 {
 	NumberSingleRatio,
 	NumberSingleNormal,
 	NumberSingleFov,
 	NumberSingle,
+	NumberTripletRatio,
 	NumberTripletNormal,
 	NumberTripletColor,
 	NumberTriplet,

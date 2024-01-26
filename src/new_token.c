@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 22:12:52 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 19:11:34 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 23:36:42 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,38 +40,29 @@ enum e_token_type	number_type(float num)
 	return (NumberSingle);
 }
 
-enum e_token_type	number_check(t_token *new, enum e_token_type generic_type)
+enum e_token_type	triplet_check(t_token *new)
 {
 	float				nums[3];
-	enum e_token_type	types[sizeof(nums) / sizeof(*nums)];
 	enum e_token_type	possible_types[5];
-	int					i;
+	unsigned int		i;
 
-	// ft_bzero(&nums, sizeof(nums));
 	parse_triplet((t_trip_interface){&nums[0], &nums[1], &nums[2]}, &(t_list){new, 0});
-	types[0] = number_type(nums[0]);
-	if (generic_type == NumberSingle && types[0] != NumberSingleNormal)
-		return (types[0]);
-	else if (generic_type == NumberSingle)
-		return (NumberSingle);
-	types[1] = number_type(nums[1]);
-	types[2] = number_type(nums[2]);
-	ft_memcpy(possible_types, (enum e_token_type[]){NumberSingleRatio, \
-	NumberSingleNormal, NumberSingleFov, NumberSingle, eNull}, 20);
+	ft_memcpy(possible_types, (enum e_token_type[]){NumberTripletRatio,\
+	NumberTripletNormal, NumberTripletColor, NumberTriplet, eNull}, 20);
 	i = 0;
 	while (i < sizeof(nums) / sizeof(*nums))
 	{
+		if (nums[i] < -1 || nums[i] > 255)
+			return (NumberTriplet);
 		if(nums[i] < 0)
 		{
-			remove_type(possible_types, NumberSingleRatio);
-			remove_type(possible_types, NumberSingleFov);
+			remove_type(possible_types, NumberTripletRatio);
+			remove_type(possible_types, NumberTripletColor);
 		}
-		if (nums[i] < -1 || nums[i] > 180)
-			return (NumberTriplet);
 		if (nums[i] > 1)
 		{
-			remove_type(possible_types, NumberSingleRatio);
-			remove_type(possible_types, NumberSingleNormal);
+			remove_type(possible_types, NumberTripletRatio);
+			remove_type(possible_types, NumberTripletNormal);
 		}
 		i++;
 	}
@@ -97,8 +88,10 @@ enum e_token_type	parse_type(t_token *new)
 		token_char_check(possible_types, &data);
 		i++;
 	}
-	if (possible_types[0] == NumberSingle || possible_types[0] == NumberTriplet)
-		return (number_check(new, possible_types[0]));
+	if (possible_types[0] == NumberSingle)
+		return (number_type(ft_atof(new->str)));
+	else if (possible_types[0] == NumberTriplet)
+		return (triplet_check(new));
 	return (possible_types[0]);
 }
 
