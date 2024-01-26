@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   new_token2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 20:42:20 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/25 22:17:52 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:08:48 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_parsing.h"
 
-static inline void	remove_type(enum e_token_type *arr, enum e_token_type type)
+void	remove_type(enum e_token_type *arr, enum e_token_type type)
 {
 	int	i;
 	int	j;
 
-	if (type == E_NULL)
+	if (type == eNull)
 		return ;
 	i = 0;
-	while (arr[i] != E_NULL)
+	while (arr[i] != eNull)
 	{
 		if (arr[i] == type)
 		{
 			j = i + 1;
 			arr[i] = arr[j];
-			while (arr[j] != E_NULL)
+			while (arr[j] != eNull)
 			{
 				arr[j] = arr[j + 1];
 				j++;

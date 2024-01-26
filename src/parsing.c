@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 00:34:43 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:05:45 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ static int	get_types_to_match(enum e_token_type *ttm, t_token *token)
 {
 	if (!ft_strncmp(token->str, AMBIENT_LIGTHING, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]) \
-		{NumberSingle, NumberTriplet, E_NULL}, sizeof(*ttm) * 3);
+		{NumberSingle, NumberTriplet, eNull}, sizeof(*ttm) * 3);
 	else if (!ft_strncmp(token->str, CAMERA, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]){NumberTriplet, \
-		NumberTriplet, NumberSingle, E_NULL}, sizeof(*ttm) * 4);
+		NumberTriplet, NumberSingle, eNull}, sizeof(*ttm) * 4);
 	else if (!ft_strncmp(token->str, LIGHT, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]){NumberTriplet, \
-		NumberSingle, NumberTriplet, E_NULL}, sizeof(*ttm) * 4);
+		NumberSingle, NumberTriplet, eNull}, sizeof(*ttm) * 4);
 	else if (!ft_strncmp(token->str, PLANE, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]){NumberTriplet, \
-		NumberTriplet, NumberTriplet, E_NULL}, sizeof(*ttm) * 4);
+		NumberTriplet, NumberTriplet, eNull}, sizeof(*ttm) * 4);
 	else if (!ft_strncmp(token->str, SPHERE, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]){NumberTriplet, \
-		NumberSingle, NumberTriplet, E_NULL}, sizeof(*ttm) * 4);
+		NumberSingle, NumberTriplet, eNull}, sizeof(*ttm) * 4);
 	else if (!ft_strncmp(token->str, CYLINDER, INT_MAX))
 		ft_memcpy(ttm, (enum e_token_type[TTM_SIZE]){NumberTriplet, \
-		NumberTriplet, NumberSingle, NumberSingle, NumberTriplet, E_NULL}, \
+		NumberTriplet, NumberSingle, NumberSingle, NumberTriplet, eNull}, \
 		sizeof(*ttm) * 6);
 	else
 		return (0);
@@ -74,12 +74,12 @@ static int	validate_object_tokens(t_list *tokens)
 	tokens = tokens->next;
 	i = 0;
 	while (tokens && ((t_token *)tokens->content)->type == types_to_match[i] \
-	&& types_to_match[i] != E_NULL)
+	&& types_to_match[i] != eNull)
 	{
 		i++;
 		tokens = tokens->next;
 	}
-	return (types_to_match[i] == E_NULL && \
+	return (types_to_match[i] == eNull && \
 	(!tokens || ((t_token *)tokens->content)->type == ObjType));
 }
 

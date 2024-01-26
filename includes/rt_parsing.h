@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parsing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:43:52 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/25 21:52:21 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:05:45 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@
 
 enum	e_token_type
 {
+	NumberSingleRatio,
+	NumberSingleNormal,
+	NumberSingleFov,
 	NumberSingle,
+	NumberTripletNormal,
+	NumberTripletColor,
 	NumberTriplet,
 	ObjType,
 	Garbage,
-	E_NULL
+	eNull
 };
 //E_NULL needs to be capitalized because of norminette
 
@@ -38,7 +43,6 @@ typedef struct s_triplet_parsing_interface
 typedef struct s_type_parsing_data
 {
 	char				c;
-	// char				prev;
 	int					point_count;
 	int					comma_count;
 	int					sign_count;
