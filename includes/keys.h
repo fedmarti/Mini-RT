@@ -17,4 +17,20 @@ enum on_hold
 	Alt
 };
 
+enum arrow
+{
+	Null_arrow = 0,
+	Left = 65361,
+	Up,
+	Right,
+	Down
+};
+
+void left_on();
+void up_on();
+void right_on();
+void down_on();
+
+extern void (*handlers[])(void);
+
 #endif

@@ -31,6 +31,7 @@ t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 
 	main_window->init_ptr = mlx_init();
 	main_window->window = mlx_new_window(main_window->init_ptr,(unsigned int) WIN_WIDTH ,(unsigned int)WIN_HEIGHT, title);
+	mlx_do_key_autorepeatoff(main_window->init_ptr);
 	mlx_hook(main_window->window, KeyPress, KeyPressMask, handle_keypress, general);
 	mlx_hook(main_window->window, KeyRelease, KeyReleaseMask, handle_keyrelease, general);
 	//mlx_mouse_hook(main_window, ); SELECT
