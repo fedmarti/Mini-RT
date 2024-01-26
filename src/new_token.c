@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 22:12:52 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 23:36:42 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/27 00:41:42 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ enum e_token_type	triplet_check(t_token *new)
 	return (possible_types[0]);
 }
 
+//analyzes the whole str contained in the token and defines its type
+//through a process of elimination
 enum e_token_type	parse_type(t_token *new)
 {
 	enum e_token_type	possible_types[5];
