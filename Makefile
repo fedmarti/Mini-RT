@@ -7,6 +7,7 @@ new_token2.c \
 parse_object.c \
 parse_shapes.c \
 parsing.c \
+remove_comments.c \
 scene.c \
 tokenizer.c \
 keys.c \
