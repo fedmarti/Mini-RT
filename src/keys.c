@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:17:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 22:32:50 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/27 00:17:32 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int handle_keypress(int pressedKey, t_general *general)
 {
+	int eval;
+	eval = 0;
 	if(general->arrow == (enum arrow)pressedKey)
 		return(0);
 	if(pressedKey == SPACE)
@@ -33,9 +35,13 @@ int handle_keypress(int pressedKey, t_general *general)
 		general->special_key = Shift;
 	if(pressedKey >= LEFT && pressedKey <= DOWN)
 	{
-		XAutoRepeatOff(((t_xvar *)(general->program.init_ptr))->display);
-		// mlx_do_key_autorepeatoff(general->program.init_ptr);
 		general->arrow = pressedKey;
+		eval = general->arrow;
+		if(general->special_key == Alt)
+			eval += 8;
+		else if(general->special_key == Shift)
+			eval += 4;
+		(*general->handlers[eval - 65361])(general);
 	}
 	return(0);
 }
@@ -50,8 +56,7 @@ int handle_keyrelease (int releasedKey, t_general *general)
 	else if(general->arrow == (enum arrow)releasedKey)
 	{
 		general->arrow = Null_arrow;
-		XAutoRepeatOn(((t_xvar *)(general->program.init_ptr))->display);
-		printf("RELEASED!! LIBERO\n");
+		printf("Rilascio..\n\nRENDERING\n\n");
 	}
 	return(0);
 }
