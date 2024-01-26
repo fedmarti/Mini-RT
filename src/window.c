@@ -15,8 +15,6 @@ void save_window_info(t_window *main_window)
 		main_window->aspectratio = WIN_HEIGHT / WIN_WIDTH;
 }
 
-
-
 t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 {
 	const int LEN = 30;
@@ -35,6 +33,7 @@ t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 	main_window->window = mlx_new_window(main_window->init_ptr,(unsigned int) WIN_WIDTH ,(unsigned int)WIN_HEIGHT, title);
 	mlx_hook(main_window->window, KeyPress, KeyPressMask, handle_keypress, general);
 	mlx_hook(main_window->window, KeyRelease, KeyReleaseMask, handle_keyrelease, general);
+	//mlx_mouse_hook(main_window, ); SELECT
 	mlx_hook(main_window->window, DestroyNotify, ButtonPressMask, close_x, main_window);
 	save_window_info(main_window);
 	return(main_window);

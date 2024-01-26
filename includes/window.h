@@ -15,10 +15,9 @@ typedef struct s_window
 
 typedef struct s_general_info
 {
-	t_mouse mouse;
+	bool help_info;
 	enum on_hold on_hold;
 	t_window program;
-	bool help_info;
 } t_general;
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);
