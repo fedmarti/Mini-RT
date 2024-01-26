@@ -6,11 +6,11 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:17:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 18:17:48 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/26 22:32:50 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "minirt.h"
 #include <mlx_int.h>
 
 int handle_keypress(int pressedKey, t_general *general)

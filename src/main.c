@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 05:39:24 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/26 22:32:09 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ void	print_scene_content(t_scene *scene)
 		switch (shapes[i].type)
 		{
 		case Plane:
+			;
 			const t_plane	*plane = &shapes[i].shape.plane;
 			printf(" x:%f, y:%f, z:%f, normal_x:%f, normal_y:%f, normal_z:%f, color:%X\n", plane->x, plane->y, plane->z, plane->normal_x, plane->normal_y, plane->normal_z, plane->color);
 			break;
 		case Sphere:
+			;
 			const t_sphere *sphere = &shapes[i].shape.sphere;
 			printf(" x:%f, y:%f, z:%f, diameter:%f, color:%X\n", sphere->x, sphere->y, sphere->z, sphere->diameter, sphere->color);
 			break ;
 		case Cylinder:
+			;
 			const t_cylinder *cylinder = &shapes[i].shape.cylinder;
 			printf(" x:%f, y:%f, z:%f, normal_x:%f, normal_y:%f, normal_z:%f, height:%f, diameter:%f, color:%X\n", cylinder->x, cylinder->y, cylinder->z, cylinder->normal_x, plane->normal_y, cylinder->normal_z, cylinder->height, cylinder->diameter, cylinder->color);
 			break ; 
