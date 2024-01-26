@@ -12,6 +12,9 @@ scene.c \
 tokenizer.c \
 keys.c \
 window.c \
+arrow_alted.c \
+arrow_shifted.c \
+arrow.c \
 
 MLX=./minilibx-linux/libmlx.a
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 22:32:09 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/27 00:18:24 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	print_scene_content(t_scene *scene)
 
 int	main(int argc, char **argv)
 {
+	(void)argc;
 	t_scene		*scene;
 	t_general	general;
 

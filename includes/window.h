@@ -28,10 +28,23 @@ t_window *load_window(t_window *main_window, char *title, t_general *general);
 int close_x(t_general *general);
 int handle_keyrelease (int releasedKey, t_general *general);
 int handle_keypress(int pressedKey, t_general *general);
+
+
 void left_on(void *general);
 void up_on(void *general);
 void right_on(void *general);
 void down_on(void *general);
+
+void alt_left_on(void *general);
+void alt_up_on(void *general);
+void alt_right_on(void *general);
+void alt_down_on(void *general);
+
+void shift_left_on(void *general);
+void shift_up_on(void *general);
+void shift_right_on(void *general);
+void shift_down_on(void *general);
+
 
 
 #endif
