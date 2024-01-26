@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 23:41:56 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/27 00:00:09 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "objects.h"
 #include "symbols.h"
 
+void remove_comments(char **file);
 t_scene	*parse_tokens(t_list *tokens);
 
 /*
@@ -155,6 +156,7 @@ t_scene	*parse_rt(char *filename)
 	file = ft_read_file(filename);
 	if (!file)
 		return (NULL);
+	remove_comments(file);
 	tokens = tokenize_file(file);
 	ft_free_matrix((void ***)&file, INT_MAX);
 	if (!tokens || !valid_file_content(tokens))
