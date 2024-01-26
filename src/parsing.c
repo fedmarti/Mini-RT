@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/25 22:50:07 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/26 00:34:43 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ static int	is_rt_file(char *filename)
 {
 	char	*find;
 
-	find = ft_strnstr(filename, ".rt", INT_MAX);
-	while (find && find[3])
-	{
-		find = ft_strnstr(find, ".rt", INT_MAX);
-	}
-	return (find != NULL);
+	find = ft_strrchr(filename, '.');
+	return (find && !ft_strncmp(find, ".rt", 4));
 }
 
 //A  ns nt
