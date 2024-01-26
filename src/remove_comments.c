@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:55:29 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/27 00:00:36 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/27 00:44:50 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void remove_comments(char **file)
 	while (file[i])
 	{
 		j = 0;
-		while (file[j])
+		while (file[i][j])
 		{
 			if (file[i][j] == '#')
 			{
