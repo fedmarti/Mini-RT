@@ -19,9 +19,9 @@ typedef struct s_general_info
 {
 	bool help_info;
 	enum on_hold special_key;
-	enum arrow arrow;
 	t_window program;
-	void (*handlers[4])(void *general);
+	int count;
+	void (*handlers[12])(void *general);
 } t_general;
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);

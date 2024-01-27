@@ -3,7 +3,7 @@
 
 int close_x(t_general *general)
 {
-	general->arrow = Null_arrow;
+	(void)general;
 	exit(1);
 	return(0);
 }
@@ -30,6 +30,7 @@ void init_funct_pointer(t_general *general)
     general->handlers[9] = alt_up_on;
     general->handlers[10] = alt_right_on;
     general->handlers[11] = alt_down_on;
+	general->special_key = Null;
 }
 
 t_window *load_window(t_window *main_window, char *titlex, t_general *general)

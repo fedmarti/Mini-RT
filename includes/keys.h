@@ -9,21 +9,14 @@
 #define SPACE 32
 #define SHIFT_LEFT_KEY 65505
 #define ALT_KEY 65513
+#define ENTER 65293
+#define AT_LEAST 10
 
 enum on_hold
 {
-	Null = 0,
-	Shift,
-	Alt
-};
-
-enum arrow
-{
-	Null_arrow = 0,
-	Left = 65361,
-	Up,
-	Right,
-	Down
+	Null = 65361,
+	Shift = 65357,
+	Alt = 65353
 };
 
 #endif
