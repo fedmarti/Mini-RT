@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:17:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/27 13:44:48 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/01/27 13:45:49 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int handle_keypress(int pressedKey, t_general *general)
 		general->special_key = Alt;
 	else if(pressedKey == SHIFT_LEFT_KEY)
 		general->special_key = Shift;
-	else if(pressedKey == ENTER)
-		serious_render();
+	// else if(pressedKey == ENTER)
+	// 	serious_render();
 	else if (pressedKey == ESC)
 		close_x(general);
 	return(0);
