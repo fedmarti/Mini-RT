@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:55:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/28 23:20:26 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/28 23:36:42 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_ray_hit
 	t_shape	*shape;
 }	t_hit;
 
+typedef float	t_radians;
+typedef float	t_degrees;
 
+t_vec3	vec3_normalize(t_vec3 v);
+float	vec3_length(t_vec3 v);
+t_vec3	vec3_add(t_vec3 v1, t_vec3 v2);
+t_vec3	vec3_scale(t_vec3 v, float scalar);
 
 #endif
