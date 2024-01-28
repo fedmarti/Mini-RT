@@ -18,7 +18,7 @@ typedef struct s_window
 typedef struct s_general_info
 {
 	bool help_info;
-	enum on_hold special_key;
+	enum e_on_hold special_key;
 	t_window program;
 	int count;
 	void (*handlers[12])(void *general);
