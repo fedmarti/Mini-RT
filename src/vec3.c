@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/28 23:35:35 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:17:14 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,31 @@ t_vec3	vec3_scale(t_vec3 v, float scalar)
 
 t_vec3	vec3_rotate(t_vec3 vec, t_radians x, t_radians y, t_radians z)
 {
-	//rcoddio so troppo stanco per sta roba, la faccio domani	
+	t_vec3	new;
+
+	new.x = vec.x * (cos(x) * cos(y)) + vec.y * (cos(x) * sin(y) * sin(z) - \
+	(sin(x) * cos(z))) + vec.z * (cos(x) * sin(y) * cos(z) + sin(x) * sin(z));
+	new.y = vec.x * (sin(x) * cos(y)) + vec.y * (sin(x) * sin(y) * sin(z) \
+	+ cos(x) * cos(z)) + vec.z * (sin(x) * sin(y) * cos(z) - (cos(x) * sin(z)));
+	new.z = vec.x * (-1 * (sin(y))) + vec.y * (cos(y) * sin(z)) + vec.z \
+	* (cos(y) * cos(z));
+	return (new);
 }
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	t_vec3	vector = {0, 0, 1};
+// 	t_radians	rot_x, rot_y, rot_z;
+
+// 	printf("vector: [%f, %f, %f]\n", vector.x, vector.y, vector.z);
+// 	printf("x angle:\n");
+// 	scanf("%f", &rot_x);
+// 	printf("y angle:\n");
+// 	scanf("%f", &rot_y);
+// 	printf("z angle:\n");
+// 	scanf("%f", &rot_z);
+// 	vector = vec3_rotate(vector, rot_x, rot_y, rot_z);
+// 	printf("vector: [%f, %f, %f]\n", vector.x, vector.y, vector.z);
+// }
