@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/30 00:17:14 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:11:17 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,3 @@ t_vec3	vec3_rotate(t_vec3 vec, t_radians x, t_radians y, t_radians z)
 	* (cos(y) * cos(z));
 	return (new);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	t_vec3	vector = {0, 0, 1};
-// 	t_radians	rot_x, rot_y, rot_z;
-
-// 	printf("vector: [%f, %f, %f]\n", vector.x, vector.y, vector.z);
-// 	printf("x angle:\n");
-// 	scanf("%f", &rot_x);
-// 	printf("y angle:\n");
-// 	scanf("%f", &rot_y);
-// 	printf("z angle:\n");
-// 	scanf("%f", &rot_z);
-// 	vector = vec3_rotate(vector, rot_x, rot_y, rot_z);
-// 	printf("vector: [%f, %f, %f]\n", vector.x, vector.y, vector.z);
-// }
