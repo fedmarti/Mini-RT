@@ -3,3 +3,4 @@ miniRT
 */*.vscode
 */*.txt
 */*lib*.a
+*/*/*.o
