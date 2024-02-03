@@ -22,10 +22,10 @@ all: $(ROTATION)
 	make -C .. $(patsubst ../%,%,$@)
 
 $(ROTATION): $(ROTATION_OBJ) $(GML)
-	$(CC) $(CFLAGS) -o $@ $^ -lm -I../includes -I$(GLM_HEADERS)
+	$(CC) $(CFLAGS) -o $@ $^ -lm 
 
 $(BUILD)%.o:%.c $(BUILD)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $< -I../includes -I$(GLM_HEADERS)
 
 $(BUILD):
 	mkdir $@

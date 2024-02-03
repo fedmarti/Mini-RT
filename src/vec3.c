@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/30 19:11:17 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:15:33 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,16 @@ t_vec3	vec3_scale(t_vec3 v, float scalar)
 t_vec3	vec3_rotate(t_vec3 vec, t_radians x, t_radians y, t_radians z)
 {
 	t_vec3	new;
+	t_vec3	cos;
+	t_vec3	sin;
 
-	new.x = vec.x * (cos(x) * cos(y)) + vec.y * (cos(x) * sin(y) * sin(z) - \
-	(sin(x) * cos(z))) + vec.z * (cos(x) * sin(y) * cos(z) + sin(x) * sin(z));
-	new.y = vec.x * (sin(x) * cos(y)) + vec.y * (sin(x) * sin(y) * sin(z) \
-	+ cos(x) * cos(z)) + vec.z * (sin(x) * sin(y) * cos(z) - (cos(x) * sin(z)));
-	new.z = vec.x * (-1 * (sin(y))) + vec.y * (cos(y) * sin(z)) + vec.z \
-	* (cos(y) * cos(z));
+	cos = (t_vec3){cosf(x), cosf(y), cosf(z)};
+	sin = (t_vec3){sinf(x), sinf(y), sinf(z)};
+	new.x = vec.x * (cos.x * cos.y) + vec.y * (cos.x * sin.y * sin.z - \
+	(sin.x * cos.z)) + vec.z * (cos.x * sin.y * cos.z + sin.x * sin.z);
+	new.y = vec.x * (sin.x * cos.y) + vec.y * (sin.x * sin.y * sin.z \
+	+ cos.x * cos.z) + vec.z * (sin.x * sin.y * cos.z - (cos.x * sin.z));
+	new.z = vec.x * (-1 * (sin.y)) + vec.y * (cos.y * sin.z) + vec.z \
+	* (cos.y * cos.z);
 	return (new);
 }
