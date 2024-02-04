@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry_3d.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:55:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/02 23:37:59 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:34:08 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ float	vec3_length(t_vec3 v);
 t_vec3	vec3_add(t_vec3 v1, t_vec3 v2);
 t_vec3	vec3_scale(t_vec3 v, float scalar);
 t_vec3	vec3_rotate(t_vec3	v, t_radians x, t_radians y, t_radians z);
+t_vec3	vec3_substract(t_vec3 v1, t_vec3 v2);
 #endif

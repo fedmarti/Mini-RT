@@ -3,9 +3,12 @@
 
 
 #include "minirt.h"
+#include "viewport.h"
 //KEYPRESS MACRO
+# define ASPECT_RATIO 4/3
 # define WIN_WIDTH 720.0f
 # define WIN_HEIGHT 480.0f
+
 
 typedef struct s_window
 {
@@ -22,6 +25,7 @@ typedef struct s_general_info
 	t_window program;
 	int count;
 	void (*handlers[12])(void *general);
+	t_viewport viewport;
 } t_general;
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);
@@ -45,6 +49,5 @@ void shift_up_on(void *general);
 void shift_right_on(void *general);
 void shift_down_on(void *general);
 
-
-
+void init_viewport(t_general *general, t_camera *camera);
 #endif

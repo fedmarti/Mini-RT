@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:26:34 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/26 18:03:03 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:25:22 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
-# include "shapes.h"
+# include "minirt.h"
 
-typedef	t_image;
+//typedef	t_image;
 
 typedef struct s_ambient_lighting
 {
