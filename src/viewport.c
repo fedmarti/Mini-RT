@@ -25,7 +25,7 @@ void init_viewport(t_general *general, t_camera *camera)
 	v->viewport_u.x = v->viewport_width;
 	v->viewport_v.y = v->viewport_height;
 	v->pixel_u = v->viewport_u.x / v->image_width;
-	v->pixel_v = v->viewport_v.x / v->image_height;
+	v->pixel_v = v->viewport_v.y / v->image_height;
 	v->viewport_starting_point = \
 	vec3_substract(
 	vec3_substract(
