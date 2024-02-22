@@ -9,7 +9,6 @@
 # define WIN_WIDTH 720.0f
 # define WIN_HEIGHT 480.0f
 
-
 typedef struct s_window
 {
 	void	*init_ptr;
@@ -28,7 +27,6 @@ typedef struct s_general_info
 	bool help_info;
 	enum e_on_hold special_key;
 	t_window window;
-	int count;
 	void (*handlers[12])(void *general);
 	t_viewport viewport;
 } t_general;

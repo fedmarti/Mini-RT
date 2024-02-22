@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/04 02:24:57 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/13 01:39:11 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ t_vec3	vec3_normalize(t_vec3 v)
 float	vec3_length(t_vec3 v)
 {
 	return ((float)sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2)));
+}
+
+float dot(t_vec3 u, t_vec3 v)
+{
+	return(u.x*v.x + u.y * v.y + u.z * v.z);
 }
 
 t_vec3	vec3_substract(t_vec3 v1, t_vec3 v2)
