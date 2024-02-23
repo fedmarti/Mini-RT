@@ -48,7 +48,9 @@ t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 		title[ft_strlen(title)-3] = 0;
 
 	main_window->init_ptr = mlx_init();
-	main_window->window = mlx_new_window(main_window->init_ptr,(unsigned int) WIN_WIDTH ,(unsigned int)WIN_HEIGHT, title);
+	main_window->window = mlx_new_window(main_window->init_ptr,(unsigned int) general->viewport.image_width ,(unsigned int)general->viewport.image_height, title);
+	main_window->img_ptr = mlx_new_image(main_window->init_ptr, general->viewport.image_width, general->viewport.image_height);
+	main_window->img_data = (int *)mlx_get_data_addr(main_window->img_ptr, &main_window->bits_per_pixel, &main_window->size_line, &main_window->endian);
 	init_funct_pointer(general);
 	mlx_hook(main_window->window, KeyPress, KeyPressMask, handle_keypress, general);
 	mlx_hook(main_window->window, KeyRelease, KeyReleaseMask, handle_keyrelease, general);

@@ -16,7 +16,10 @@ arrow_alted.c \
 arrow_shifted.c \
 arrow.c \
 viewport.c \
-vec3.c
+vec3.c \
+render_loop.c \
+get_color.c \
+calc.c
 
 MLX=./minilibx-linux/libmlx.a
 
