@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/04 02:28:07 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/25 11:33:19 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "geometry_3d.h"
 # include "mouse.h"
 # include "keys.h"
+# include "calc.h"
 # include "window.h"
 # include "viewport.h"
 # include "screen_coord.h"

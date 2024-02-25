@@ -15,3 +15,14 @@ float get_sphere_t(float t1, float t2)
 		return t1;
     return fmin(t1, t2);
 }
+
+t_vec3	point_at_parameter(t_vec3 origin, t_vec3 raydirection, float t)
+{
+	return ((t_vec3){origin.x + t * raydirection.x, origin.y + t
+		* raydirection.y, origin.z + t * raydirection.z});
+}
+
+float	distance(t_vec3 a, t_vec3 b)
+{
+	return (sqrt(dot(vec3_substract(a, b), vec3_substract(a, b))));
+}

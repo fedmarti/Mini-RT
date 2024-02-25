@@ -19,7 +19,8 @@ viewport.c \
 vec3.c \
 render_loop.c \
 get_color.c \
-calc.c
+calc.c \
+cylinder.c \
 
 MLX=./minilibx-linux/libmlx.a
 

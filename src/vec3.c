@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/04 02:24:57 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/24 05:32:08 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ float	vec3_length(t_vec3 v)
 t_vec3	vec3_substract(t_vec3 v1, t_vec3 v2)
 {
 	return ((t_vec3){v1.x - v2.x, v1.y - v2.y, v1.z - v2.z});
+}
+
+t_vec3	vec3_multiply(t_vec3 v1, t_vec3 v2)
+{
+	return ((t_vec3){v1.x * v2.x, v1.y * v2.y, v1.z * v2.z});
 }
 
 t_vec3	vec3_add(t_vec3 v1, t_vec3 v2)

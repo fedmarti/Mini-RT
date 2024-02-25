@@ -20,13 +20,16 @@ void rotate_raydir(t_vec3 *raydir, t_vec3 camera)
     rotatedY = (t_vec3){
         rotatedX.x * cos_y - rotatedX.z * sin_y,
         rotatedX.y,
-        -rotatedX.x * sin_y + rotatedX.z * cos_y
+        rotatedX.x * sin_y + rotatedX.z * cos_y
     };
     *raydir = (t_vec3)vec3_normalize(rotatedY);
 }
 
 void render(t_scene *scene, t_viewport viewport, t_window *program)
 {
+	float viewport_x;
+	float viewport_y;
+	int color;
 	viewport.x = 0;
 	viewport.y = 0;
 	while(viewport.y < viewport.image_height)
@@ -34,11 +37,11 @@ void render(t_scene *scene, t_viewport viewport, t_window *program)
 		viewport.x = 0;
 		while(viewport.x < viewport.image_width)
 		{
-			viewport.actual_raydir = 
-			(t_vec3){(viewport.x - viewport.image_width /  2.0) * viewport.viewport_width / viewport.image_width,
-			-(viewport.y - viewport.image_height / 2.0) * viewport.viewport_height / viewport.image_height, 1.0};
+			viewport_x = (viewport.x - viewport.image_width /  2.0) * (viewport.viewport_width / viewport.image_width);
+            viewport_y = -(viewport.y - viewport.image_height / 2.0) * (viewport.viewport_height / viewport.image_height);
+			viewport.actual_raydir = (t_vec3){viewport_x, viewport_y, 1.0};
 			rotate_raydir(&viewport.actual_raydir, (t_vec3){scene->camera.dir_x, scene->camera.dir_y, scene->camera.dir_z});
-			int color = get_color(viewport.actual_raydir, scene);
+			color = get_color(viewport.actual_raydir, scene);
 			program->img_data[(int)viewport.x + (int)viewport.y * (int)viewport.image_width] = color;
 			++viewport.x;
 		}
