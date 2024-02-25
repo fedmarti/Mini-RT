@@ -8,12 +8,6 @@ float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera)
 	float c;
 	float discr;
 
-	sphere.x = 0;
-	sphere.y = 10;
-	sphere.z = 40;
-
-	sphere.diameter = 20;
-
 	oc = (t_vec3){camera.x - sphere.x, camera.y - sphere.y, camera.z - sphere.z};
 	a = dot(raydir, raydir);
 	b = 2.0 * dot(oc, raydir);
@@ -65,13 +59,13 @@ int get_color(t_vec3 raydir, t_scene *scene)
 			switch (scene->shapes[i].type)
 			{
 			case Plane:
-				color = 0xFF0000;
+				color = scene->shapes[i].shape.plane.color;
 				break;
 			case Sphere:
-				color = 0x00FF00;
+				color = scene->shapes[i].shape.sphere.color;
 				break;
 			case Cylinder:
-				color = 0x0000FF;
+				color = scene->shapes[i].shape.cylinder.color;
 				break;
 			default:
 				color = 0;
