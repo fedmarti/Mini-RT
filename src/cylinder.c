@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/25 14:05:50 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 04:01:52 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ float	get_t(t_cyl_utils *data, t_cylinder cyl)
 		&& coord_axis_cyl_t0 <= cyl.height && data->t[0] < data->min_t)
 	{
 		data->min_t = data->t[0];
-		data->flag = 1;
+		data->flag = 2;
 		data->hit = true;
 	}
 	if (data->t[1] > 0 && coord_axis_cyl_t1 >= 0
 		&& coord_axis_cyl_t1 <= cyl.height && data->t[1] < data->min_t)
 	{
 		data->min_t = data->t[1];
-		data->flag = 2;
+		data->flag = 1;
 		data->hit = true;
 	}
 	return (data->min_t);
@@ -115,14 +115,6 @@ float	hit_cyl(t_cylinder cyl, t_vec3 origin, t_vec3 raydir, t_cyl_utils *data)
 {
 	t_vec3	oc_perpend;
 	t_vec3	dir_perpend;
-	cyl.diameter = 80.1;
-	cyl.height = 402.0;
-	cyl.normal_x = 0.5;
-	cyl.normal_y = 1.0;
-	cyl.normal_z = 1.0;
-	cyl.x = 400.0;
-	cyl.y = 10.0;
-	cyl.z = 60.6;
 
 	init_data_basic(data, &origin, &raydir, cyl);
 	oc_perpend = get_perpendicular_oc(data);

@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/23 05:36:31 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 05:16:56 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 	// print_scene_content(scene);
 	init_viewport(&general, &scene->camera);
 	general.program= *load_window(&general.program, argv[1], &general);
+	apply_ambient(scene);
 	mlx_loop_hook(general.program.init_ptr, render_loop, &general);
 	mlx_loop(general.program.init_ptr);
 	free_scene(scene);

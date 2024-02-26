@@ -62,5 +62,7 @@ float get_sphere_t(float t1, float t2);
 float hit_cyl(t_cylinder cyl, t_vec3 origin, t_vec3 raydir, t_cyl_utils *data);
 t_vec3	point_at_parameter(t_vec3 origin, t_vec3 raydirection, float t);
 float	distance(t_vec3 a, t_vec3 b);
+int calculate_cylinder_color(t_cylinder cyl,t_cyl_utils *data, int color);
+void apply_ambient(t_scene *scene);
 
 #endif

@@ -21,6 +21,8 @@ render_loop.c \
 get_color.c \
 calc.c \
 cylinder.c \
+cyl_color.c \
+ambient_light.c \
 
 MLX=./minilibx-linux/libmlx.a
 

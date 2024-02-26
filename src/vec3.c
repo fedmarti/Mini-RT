@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/24 05:32:08 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 06:18:43 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 t_vec3	vec3_normalize(t_vec3 v)
 {
 	const float	len = (float)sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
-
-	return ((t_vec3){v.x / len, v.y / len, v.z / len});
+	if (len > 0.0001)
+        return (t_vec3){v.x / len, v.y / len, v.z / len};
+	return (v);
 }
 
 float	vec3_length(t_vec3 v)
