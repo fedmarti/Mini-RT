@@ -1,43 +1,5 @@
 #include "minirt.h"
 
-float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera)
-{
-	t_vec3 oc;
-	float a;
-	float b;
-	float c;
-	float discr;
-
-	oc = (t_vec3){camera.x - sphere.x, camera.y - sphere.y, camera.z - sphere.z};
-	a = dot(raydir, raydir);
-	b = 2.0 * dot(oc, raydir);
-	c = dot(oc, oc) - (sphere.diameter / 2) * (sphere.diameter / 2);
-	discr = b * b - 4 * a * c;
-	if (discr < 0)
-		return -1.0;
-	else
-		return (get_sphere_t((-b - sqrt(discr)) / (2 * a), (-b + sqrt(discr)) / (2 * a)));
-}
-
-float intersect_plane(t_plane plane, t_vec3 origin, t_vec3 raydir)
-{
-    float denom;
-    float t;
-    t_vec3 co;
-    t_vec3 plane_normal;
-
-    plane_normal = vec3_normalize((t_vec3){plane.normal_x, plane.normal_y, plane.normal_z});
-    denom = dot(plane_normal, raydir);
-    if (fabs(denom) > 0.0001)
-    {
-        co = vec3_substract((t_vec3){plane.x, plane.y, plane.z}, origin);
-        t = dot(co, plane_normal) / denom;
-        if (t >= 0)
-            return t;
-    }
-    return 0.0;
-}
-
 int get_color(t_vec3 raydir, t_scene *scene)
 {
 	float closest_t = INFINITY;

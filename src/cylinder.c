@@ -6,25 +6,11 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/26 04:01:52 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 06:47:30 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-t_vec3	get_perpendicular_oc(t_cyl_utils *data)
-{
-	data->dot_oc_axis = dot(data->oc, data->axis_normalize);
-	return ((t_vec3)vec3_substract(data->oc, vec3_scale(data->axis_normalize,
-				data->dot_oc_axis)));
-}
-
-t_vec3	get_perpendicular_dir(t_cyl_utils *data)
-{
-	data->dot_dir_axis = dot(data->raydir, data->axis_normalize);
-	return ((t_vec3)vec3_substract(data->raydir,
-			vec3_scale(data->axis_normalize, data->dot_dir_axis)));
-}
 
 int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend, t_cylinder cyl,
 		t_cyl_utils *data)
@@ -109,7 +95,6 @@ int	calculate_base(t_cylinder cyl, t_cyl_utils *data)
 	}
 	return (data->hit);
 }
-
 
 float	hit_cyl(t_cylinder cyl, t_vec3 origin, t_vec3 raydir, t_cyl_utils *data)
 {

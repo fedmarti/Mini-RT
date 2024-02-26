@@ -1,10 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-
 #include "minirt.h"
 #include "viewport.h"
-//KEYPRESS MACRO
 # define WIN_WIDTH 1920.0f
 # define WIN_HEIGHT 1080.0f
 
@@ -58,11 +56,13 @@ void shift_down_on(void *general);
 void init_viewport(t_general *general, t_camera *camera);
 int get_color(t_vec3 raydir, t_scene *scene);
 float dot(t_vec3 u, t_vec3 v);
-float get_sphere_t(float t1, float t2);
 float hit_cyl(t_cylinder cyl, t_vec3 origin, t_vec3 raydir, t_cyl_utils *data);
 t_vec3	point_at_parameter(t_vec3 origin, t_vec3 raydirection, float t);
 float	distance(t_vec3 a, t_vec3 b);
 int calculate_cylinder_color(t_cylinder cyl,t_cyl_utils *data, int color);
 void apply_ambient(t_scene *scene);
-
+float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera);
+t_vec3	get_perpendicular_oc(t_cyl_utils *data);
+t_vec3	get_perpendicular_dir(t_cyl_utils *data);
+float intersect_plane(t_plane plane, t_vec3 origin, t_vec3 raydir);
 #endif

@@ -14,29 +14,14 @@ viewport_v va dal bordo superiore dello schermo verso il basso.*/
 
 typedef struct s_viewport
 {
-	float 	aspect_ratio;
-	int		image_width;
-	int 	image_height;
-	float 	focal_len;
-
-	float 	viewport_height;
-	float 	viewport_width;
-
-	t_vec3 	viewport_u;
-	t_vec3 	viewport_v;
-	
-	float 	pixel_u;
-	float 	pixel_v;
-
-	t_vec3 	viewport_starting_point;
-	t_vec3 	center_of_0_index_pixel;
+	t_vec3 actual_raydir;
 	int  x;
 	int  y;
-
-	float normal_x;
-	float normal_y;
-
-	t_vec3 actual_raydir;
+	int		image_width;
+	int 	image_height;
+	float 	aspect_ratio;
+	float 	viewport_height;
+	float 	viewport_width;
 } t_viewport;
 
 #endif

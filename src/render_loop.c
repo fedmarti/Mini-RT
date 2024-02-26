@@ -1,4 +1,5 @@
 #include "minirt.h"
+
 void rotate_raydir(t_vec3 *raydir, t_vec3 camera)
 {
     float cos_x; 

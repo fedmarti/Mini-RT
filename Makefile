@@ -23,6 +23,8 @@ calc.c \
 cylinder.c \
 cyl_color.c \
 ambient_light.c \
+sphere.c \
+plane.c \
 
 MLX=./minilibx-linux/libmlx.a
 
