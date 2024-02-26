@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static int apply_ambient_light(int color, float intensity, unsigned int ambientColor)
+int apply_ambient_light(int color, float intensity, unsigned int ambientColor)
 {
     int c_rgb[3];
 	int a_rgb[3];

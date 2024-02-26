@@ -8,7 +8,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/miniRT",
-		"args": ["scenes/sphere.rt"],
+		"args": ["scenes/atom.rt"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
