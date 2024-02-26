@@ -23,26 +23,6 @@ int point_and_type(float *tmp_closest, t_scene *scene, void **actual_shape, unsi
 	return(scene->shapes[i].type);
 }
 
-int get_shape_light_color(int *closest_shape, void *actual_shape, t_scene* scene, t_cyl_utils *data)
-{
-	if (*closest_shape == Cylinder)
-	{
-		*closest_shape = -1;
-		return calculate_cylinder_color(*((t_cylinder *)actual_shape), data, scene);
-	}
-	else if (*closest_shape == Plane)
-	{
-		*closest_shape = -1;
-		return calculate_plane_color(*((t_plane *)actual_shape), scene);
-	}
-	else if (*closest_shape == Sphere)
-	{
-		*closest_shape = -1;
-		return calculate_sphere_color(*((t_sphere *)actual_shape), scene);
-	}
-	return 0x000000;
-}
-
 void init_color_utils(float *tmp_closest, unsigned int *i, int *closest_shape, void **actual_shape)
 {
 	tmp_closest[0] = INFINITY;
@@ -61,6 +41,7 @@ int get_color(t_vec3 raydir, t_scene *scene)
 	void *actual_shape; 
 	t_cyl_utils data;
 	
+	color = 0x000000;
 	init_color_utils(tmp_closest, &i, &closest_shape, &actual_shape);
 	while (++i < scene->shape_n)
 	{
@@ -68,6 +49,11 @@ int get_color(t_vec3 raydir, t_scene *scene)
 		if (tmp_closest[0] > 0 && tmp_closest[0] < tmp_closest[1])
 			closest_shape = point_and_type(tmp_closest, scene, &actual_shape, i);
 	}
-	color = get_shape_light_color(&closest_shape, actual_shape, scene, &data);
+	if (closest_shape == Cylinder)
+		color = calculate_cylinder_color(*((t_cylinder *)actual_shape), &data, scene);
+	else if (closest_shape == Plane)
+		color = calculate_plane_color(*((t_plane *)actual_shape), scene);
+	else if (closest_shape == Sphere)
+		color = calculate_sphere_color(*((t_sphere *)actual_shape), scene, raydir, tmp_closest[1]);
 	return color;
 }
