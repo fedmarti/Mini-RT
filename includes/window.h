@@ -59,10 +59,12 @@ float dot(t_vec3 u, t_vec3 v);
 float hit_cyl(t_cylinder cyl, t_vec3 origin, t_vec3 raydir, t_cyl_utils *data);
 t_vec3	point_at_parameter(t_vec3 origin, t_vec3 raydirection, float t);
 float	distance(t_vec3 a, t_vec3 b);
-int calculate_cylinder_color(t_cylinder cyl,t_cyl_utils *data, int color);
 void apply_ambient(t_scene *scene);
 float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera);
 t_vec3	get_perpendicular_oc(t_cyl_utils *data);
 t_vec3	get_perpendicular_dir(t_cyl_utils *data);
 float intersect_plane(t_plane plane, t_vec3 origin, t_vec3 raydir);
+int calculate_cylinder_color(t_cylinder cyl,t_cyl_utils *data, t_scene *scene);
+int calculate_sphere_color(t_sphere sphere, t_scene *scene);
+int calculate_plane_color(t_plane plane, t_scene *scene);
 #endif

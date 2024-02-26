@@ -15,14 +15,15 @@ static int calculate_cylinder_base(int color)
 	return(color);
 }
 
-int calculate_cylinder_color(t_cylinder cyl, t_cyl_utils *data, int color)
+int calculate_cylinder_color(t_cylinder cyl, t_cyl_utils *data, t_scene *scene)
 {
 	(void) cyl;
+	(void) scene;
 	if(data->flag == 1)
-		return(calculate_cyl_extern(color));
+		return(calculate_cyl_extern(cyl.color));
 	if(data->flag == 2)
-		return(calculate_cyl_intern(color));
+		return(calculate_cyl_intern(cyl.color));
 	if(data->flag == 3)
-		return(calculate_cylinder_base(color/2));
+		return(calculate_cylinder_base(cyl.color/2));
 	return(0);
 }
