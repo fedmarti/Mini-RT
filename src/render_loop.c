@@ -6,24 +6,26 @@ void rotate_raydir(t_vec3 *raydir, t_vec3 camera)
     float sin_x; 
     float cos_y; 
     float sin_y;
-	t_vec3 rotatedY;
-	t_vec3 rotatedX;
+	t_vec3 rotated_y;
+	t_vec3 rotated_x;
 
 	cos_x = cos(camera.x);
 	sin_x = sin(camera.x);
 	cos_y = cos(camera.y);
 	sin_y = sin(camera.y);
-    rotatedX = (t_vec3){
+    rotated_x = (t_vec3)
+	{
         raydir->x,
         raydir->y * cos_x - raydir->z * sin_x,
         raydir->y * sin_x + raydir->z * cos_x
     };
-    rotatedY = (t_vec3){
-        rotatedX.x * cos_y - rotatedX.z * sin_y,
-        rotatedX.y,
-        rotatedX.x * sin_y + rotatedX.z * cos_y
+    rotated_y = (t_vec3)
+	{
+        rotated_x.x * cos_y - rotated_x.z * sin_y,
+        rotated_x.y,
+        rotated_x.x * sin_y + rotated_x.z * cos_y
     };
-    *raydir = (t_vec3)vec3_normalize(rotatedY);
+    *raydir = (t_vec3)vec3_normalize(rotated_y);
 }
 
 void render(t_scene *scene, t_viewport viewport, t_window *program)

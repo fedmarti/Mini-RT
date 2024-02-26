@@ -3,7 +3,7 @@
 
 int close_x(t_general *general)
 {
-	(void)general;
+	free(general->scene);
 	exit(1);
 	return(0);
 }
@@ -37,8 +37,8 @@ t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 {
 	const int LEN = 30;
 	char title[LEN+1];
-	ft_bzero(title, sizeof(title));
 
+	ft_bzero(title, sizeof(title));
 	ft_strlcpy(title, "MiniRT: ", LEN);
 	if(!ft_strrchr(titlex, '/'))
 		ft_strlcat(title, titlex, LEN);
@@ -46,7 +46,6 @@ t_window *load_window(t_window *main_window, char *titlex, t_general *general)
 		ft_strlcat(title, ft_strrchr(titlex, '/') +1, LEN);
 	if(!ft_strncmp(&title[ft_strlen(title)-3], ".rt", 3))
 		title[ft_strlen(title)-3] = 0;
-
 	main_window->init_ptr = mlx_init();
 	main_window->window = mlx_new_window(main_window->init_ptr,(unsigned int) general->viewport.image_width ,(unsigned int)general->viewport.image_height, title);
 	main_window->img_ptr = mlx_new_image(main_window->init_ptr, general->viewport.image_width, general->viewport.image_height);

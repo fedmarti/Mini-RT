@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/26 05:16:56 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 09:43:53 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,15 @@ void	print_scene_content(t_scene *scene)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
 	t_scene		*scene;
 	t_general	general;
 
 	general = (t_general){0};
 	if (argc != 2)
-	{
-		write (2, "Wrong number of arguments\n", 26);
-		return (1);
-	}
+		return(write (2, "Wrong number of arguments\n", 26));
 	scene = parse_rt(argv[1]);
 	if (!scene)
-	{
-		write (2, "Errors while parsing .rt file\n", 30);
-		return (1);
-	}
+		return(write (2, "Errors while parsing .rt file\n", 30));
 	general.scene = scene;
 	// print_scene_content(scene);
 	init_viewport(&general, &scene->camera);
