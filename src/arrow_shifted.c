@@ -2,7 +2,12 @@
 
 void shift_left_on(void *general)
 {
-	(void)general;
+	t_general g = (*(t_general *)general);
+	t_sphere *sphere;
+	
+	if(g.selected_type == Sphere)
+		sphere = (t_sphere *)g.selected;
+	sphere->diameter-=20;
 	printf("SHift left!\n");
 }
 void shift_up_on(void *general)
@@ -13,8 +18,13 @@ void shift_up_on(void *general)
 }
 void shift_right_on(void *general)
 {
-	(void)general;
-	printf("SHift right!\n");
+	t_general g = (*(t_general *)general);
+	t_sphere *sphere;
+	
+	if(g.selected_type == Sphere)
+		sphere = (t_sphere *)g.selected;
+	sphere->diameter+=20;
+	printf("SHift left!\n");
 }
 void shift_down_on(void *general)
 {

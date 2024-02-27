@@ -34,8 +34,6 @@ void *select_item(t_vec3 raydir, t_scene *scene, t_general *g)
 
 int on_click_event(int button, int x, int y, t_general *g)
 {
-	g->selected = NULL;
-	g->selected_type = -1;
 	printf("x: %d ,y: %d\n", x, y);
 	if(button == CLK_LEFT)
 	{

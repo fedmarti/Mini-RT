@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-int apply_ambient_light(int color, float intensity, unsigned int ambientColor)
+int apply_ambient_light(int color, float intensity, unsigned int ambient_light_color)
 {
     int c_rgb[3];
 	int a_rgb[3];
@@ -11,9 +11,9 @@ int apply_ambient_light(int color, float intensity, unsigned int ambientColor)
     c_rgb[0] = (color >> 16) & 0xFF;
     c_rgb[1] = (color >> 8) & 0xFF;
     c_rgb[2] = color & 0xFF;
-    a_rgb[0] = (ambientColor >> 16) & 0xFF;
-    a_rgb[1] = (ambientColor >> 8) & 0xFF;
-    a_rgb[2] = ambientColor & 0xFF;
+    a_rgb[0] = (ambient_light_color >> 16) & 0xFF;
+    a_rgb[1] = (ambient_light_color >> 8) & 0xFF;
+    a_rgb[2] = ambient_light_color & 0xFF;
     while(i < 3)
     {
 		save_orig_color = c_rgb[i] * intensity;
