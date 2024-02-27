@@ -11,7 +11,7 @@ static float get_sphere_t(float t1, float t2)
     return fmin(t1, t2);
 }
 
-float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera)
+float hit_sphere(t_sphere *sphere, t_vec3 origin, t_vec3 *raydir)
 {
 	t_vec3 oc;
 	float a;
@@ -19,10 +19,10 @@ float hit_sphere(t_sphere sphere, t_vec3 raydir, t_vec3 camera)
 	float c;
 	float discr;
 
-	oc = (t_vec3){camera.x - sphere.x, camera.y - sphere.y, camera.z - sphere.z};
-	a = dot(raydir, raydir);
-	b = 2.0 * dot(oc, raydir);
-	c = dot(oc, oc) - (sphere.diameter / 2) * (sphere.diameter / 2);
+	oc = (t_vec3){origin.x - sphere->x, origin.y - sphere->y, origin.z - sphere->z};
+	a = dot(*raydir, *raydir);
+	b = 2.0 * dot(oc, *raydir);
+	c = dot(oc, oc) - (sphere->diameter / 2) * (sphere->diameter / 2);
 	discr = b * b - 4 * a * c;
 	if (discr < 0)
 		return -1.0;

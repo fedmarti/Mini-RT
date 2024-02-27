@@ -16,14 +16,15 @@ int apply_ambient_light(int color, float intensity, unsigned int ambientColor)
     a_rgb[2] = ambientColor & 0xFF;
     while(i < 3)
     {
-		save_orig_color = c_rgb[i] * (1.0 - intensity);
+		save_orig_color = c_rgb[i] * intensity;
         c_rgb[i] = (int)(save_orig_color + a_rgb[i] * intensity);
         if(c_rgb[i] > 255)
             c_rgb[i] = 255;
 		i++;
     }
     return (c_rgb[0] << 16) | (c_rgb[1] << 8) | c_rgb[2];
-}
+} 
+
 
 void apply_ambient(t_scene *scene)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geometry_3d.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:55:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/04 02:34:08 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 20:48:32 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ typedef struct s_vector3d
 
 typedef struct s_ray_hit
 {
-	float	x;
-	float	y;
-	float	z;
-	t_shape	*shape;
+	float				t;
+	void				*target;
+	enum e_shape_type	type;
 }	t_hit;
 
 typedef float	t_radians;
@@ -40,4 +39,5 @@ t_vec3	vec3_add(t_vec3 v1, t_vec3 v2);
 t_vec3	vec3_scale(t_vec3 v, float scalar);
 t_vec3	vec3_rotate(t_vec3	v, t_radians x, t_radians y, t_radians z);
 t_vec3	vec3_substract(t_vec3 v1, t_vec3 v2);
+
 #endif

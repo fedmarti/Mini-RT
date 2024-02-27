@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/25 07:37:55 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/26 20:47:56 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 
 enum e_shape_type
 {
+	Void_shape,
 	Plane,
 	Sphere,
 	Cylinder,
-	Line
+	Line,
+	Light
 };
 
 typedef struct s_plane
