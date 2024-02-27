@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:25:56 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/24 13:04:32 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:47:09 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_parsing.h"
-
+#include <math.h>
 //nt ns nt
 
 t_sphere	sphere_init(t_list *tokens)
@@ -30,6 +30,7 @@ t_plane	plane_init(t_list *tokens)
 {
 	t_plane				plane;
 	t_trip_interface	interface;
+	float				len;
 
 	interface = (t_trip_interface){&plane.x, &plane.y, &plane.z};
 	parse_triplet(interface, tokens);
@@ -37,6 +38,11 @@ t_plane	plane_init(t_list *tokens)
 	interface.y = &plane.normal_y;
 	interface.z = &plane.normal_z;
 	parse_triplet(interface, tokens->next);
+	len = sqrt((plane.normal_x * plane.normal_x) + (plane.normal_y \
+	* plane.normal_y) + (plane.normal_z * plane.normal_z));
+	plane.normal_x /= len;
+	plane.normal_y /= len;
+	plane.normal_z /= len;
 	plane.color = parse_color(tokens->next->next);
 	return (plane);
 }
@@ -47,12 +53,18 @@ t_cylinder	cylinder_init(t_list *tokens)
 {
 	t_cylinder			cylinder;
 	t_trip_interface	interface;
+	float 				len;
 
 	interface = (t_trip_interface){&cylinder.x, &cylinder.y, &cylinder.z};
 	parse_triplet(interface, tokens);
 	interface = (t_trip_interface){&cylinder.normal_x, &cylinder.normal_y, \
 	&cylinder.normal_z};
 	parse_triplet(interface, tokens->next);
+	len = sqrt((cylinder.normal_x * cylinder.normal_x) + (cylinder.normal_y \
+	* cylinder.normal_y) + (cylinder.normal_z * cylinder.normal_z));
+	cylinder.normal_x /= len;
+	cylinder.normal_y /= len;
+	cylinder.normal_z /= len;
 	cylinder.diameter = ft_atof(((t_token *)tokens->next->next->content)->str);
 	tokens = tokens->next->next->next;
 	cylinder.height = ft_atof(((t_token *)tokens->content)->str);

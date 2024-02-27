@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:44:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/26 06:52:27 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/27 20:50:21 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_parsing.h"
+#include <math.h>
 
 void	parse_triplet(t_trip_interface interface, t_list *token)
 {
@@ -58,6 +59,7 @@ t_camera	camera_init(t_list *tokens)
 {
 	t_camera			camera;
 	t_trip_interface	interface;
+	float				len;
 
 	interface.x = &camera.x;
 	interface.y = &camera.y;
@@ -67,6 +69,11 @@ t_camera	camera_init(t_list *tokens)
 	interface.y = &camera.dir_y;
 	interface.z = &camera.dir_z;
 	parse_triplet(interface, tokens->next);
+	len = sqrt((camera.dir_x * camera.dir_x) + (camera.dir_y \
+	* camera.dir_y) + (camera.dir_z * camera.dir_z));
+	camera.dir_x /= len;
+	camera.dir_y /= len;
+	camera.dir_z /= len;
 	camera.fov_degrees = ft_atof(((t_token *)tokens->next->next->content)->str);
 	return (camera);
 }
