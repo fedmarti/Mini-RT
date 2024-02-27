@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/26 23:44:00 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:37:41 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ float	get_t(t_cyl_utils *data, t_cylinder *cyl)
 		&& coord_axis_cyl_t0 <= cyl->height && data->t[0] < data->min_t)
 	{
 		data->min_t = data->t[0];
-		data->flag = 2;
+		data->flag = Outside_Surface;
 		data->hit = true;
 	}
 	if (data->t[1] > 0 && coord_axis_cyl_t1 >= 0
 		&& coord_axis_cyl_t1 <= cyl->height && data->t[1] < data->min_t)
 	{
 		data->min_t = data->t[1];
-		data->flag = 1;
+		data->flag = Inside_Surface;
 		data->hit = true;
 	}
 	return (data->min_t);
@@ -89,7 +89,7 @@ int	calculate_base(t_cylinder *cyl, t_cyl_utils *data)
 			{
 				data->min_t = t_base;
 				data->hit = true;
-				data->flag = 3;
+				data->flag = Base;
 			}
 		}
 	}

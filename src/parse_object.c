@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:44:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/27 20:50:21 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/27 21:26:02 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ t_camera	camera_init(t_list *tokens)
 	parse_triplet(interface, tokens->next);
 	len = sqrt((camera.dir_x * camera.dir_x) + (camera.dir_y \
 	* camera.dir_y) + (camera.dir_z * camera.dir_z));
+	if (len == 0)
+	{
+		camera.dir_z = 1;
+		len = 1;
+	}
 	camera.dir_x /= len;
 	camera.dir_y /= len;
 	camera.dir_z /= len;
