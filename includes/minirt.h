@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/25 11:33:19 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:16:04 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include "mlx.h"
 # include "objects.h"
 # include "geometry_3d.h"
-# include "mouse.h"
 # include "keys.h"
 # include "calc.h"
 # include "window.h"
 # include "viewport.h"
 # include "screen_coord.h"
+# include "mouse.h"
 
 void	free_scene(t_scene *scene);
 
