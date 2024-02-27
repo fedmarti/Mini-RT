@@ -29,6 +29,8 @@ typedef struct s_general_info
 	void (*handlers[12])(void *general);
 	t_viewport viewport;
 	t_scene *scene;
+	void	*selected;
+	int		selected_type;
 } t_general;
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);
@@ -70,4 +72,6 @@ int calculate_plane_color(t_plane *plane, t_scene *scene, t_vec3 raydir, float t
 t_vec3 calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_vec3 base_col, t_light light);
 int loop_light(t_scene *scene, t_vec3 hit_point, t_vec3 norm, int base_col);
 int apply_ambient_light(int color, float intensity, unsigned int ambientColor);
+t_hit hit_shape(t_shape	*obj, t_camera *camera, t_cyl_utils *data, t_vec3 *raydir);
+void rotate_raydir(t_vec3 *raydir, t_vec3 camera);
 #endif

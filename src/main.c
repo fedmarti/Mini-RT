@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/26 09:43:53 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:14:29 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	t_general	general;
 
 	general = (t_general){0};
+	general.selected_type = -1;
 	if (argc != 2)
 		return(write (2, "Wrong number of arguments\n", 26));
 	scene = parse_rt(argv[1]);
@@ -82,6 +83,7 @@ int	main(int argc, char **argv)
 	general.program= *load_window(&general.program, argv[1], &general);
 	apply_ambient(scene);
 	mlx_loop_hook(general.program.init_ptr, render_loop, &general);
+	mlx_mouse_hook(general.program.window, on_click_event, &general);
 	mlx_loop(general.program.init_ptr);
 	free_scene(scene);
 }
