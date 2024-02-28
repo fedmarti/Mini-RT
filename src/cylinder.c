@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/27 21:37:41 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:27:05 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ int	calculate_base(t_cylinder *cyl, t_cyl_utils *data)
 				data->min_t = t_base;
 				data->hit = true;
 				data->flag = Base;
+				if(i == 0)
+					data->base_is_top = true;
+				else
+					data->base_is_top = false;
 			}
 		}
 	}

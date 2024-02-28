@@ -22,6 +22,7 @@ typedef struct s_cyl_utils
 	enum e_cyl_hit	flag;
 	float			t[2];
 	bool			hit;
+	bool			base_is_top;
 } t_cyl_utils;
 
 #endif
