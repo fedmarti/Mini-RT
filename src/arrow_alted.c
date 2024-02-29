@@ -2,22 +2,33 @@
 
 void alt_left_on(void *general)
 {
-	(void)general;
-	printf("Alt left!\n");
+	t_general g;
+
+	g = *(t_general *)general;
+	float rotate_speed = 0.005;
+	g.scene->camera.dir_y-= rotate_speed;
 }
 void alt_up_on(void *general)
 {
-	(void)general;
-	static int i=0;
-	printf("Alt up! %d\n", i++);
+	t_general g;
+
+	g = *(t_general *)general;
+	float rotate_speed = 0.005;
+	g.scene->camera.dir_x-= rotate_speed;
 }
 void alt_right_on(void *general)
 {
-	(void)general;
-	printf("Alt right!\n");
+	t_general g;
+
+	g = *(t_general *)general;
+	float rotate_speed = 0.005;
+	g.scene->camera.dir_y+= rotate_speed;
 }
 void alt_down_on(void *general)
 {
-	(void)general;
-	printf("Alt down!\n");
+	t_general g;
+
+	g = *(t_general *)general;
+	float rotate_speed = 0.005;
+	g.scene->camera.dir_x+= rotate_speed;
 }
