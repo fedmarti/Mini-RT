@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/26 20:47:56 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:47:14 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_cylinder
 	float			normal_x;
 	float			normal_y;
 	float			normal_z;
-	float			height;
 	float			diameter;
+	float			height;
 	unsigned int	color;
 }	t_cylinder;
 

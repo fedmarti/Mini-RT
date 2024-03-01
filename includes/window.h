@@ -33,6 +33,12 @@ typedef struct s_general_info
 	int		selected_type;
 } t_general;
 
+enum plus_minus
+{
+	Plus = +1,
+	Minus = -1
+};
+
 t_window *load_window(t_window *main_window, char *title, t_general *general);
 int close_x(t_general *general);
 int handle_keyrelease (int releasedKey, t_general *general);
@@ -75,4 +81,5 @@ int apply_ambient_light(int color, float intensity, unsigned int ambientColor);
 t_hit hit_shape(t_shape	*obj, t_camera *camera, t_cyl_utils *data, t_vec3 *raydir);
 void rotate_raydir(t_vec3 *raydir, t_vec3 camera);
 t_vec3	vec3_invert(t_vec3 v);
+void move_obj(float *val, enum plus_minus sign);
 #endif
