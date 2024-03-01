@@ -1,28 +1,37 @@
 #include "minirt.h"
+#define STEPS 1
 
 void left_on(void *general)
 {
-	t_general *g = general;
-	g->scene->camera.x--;
-	printf("arrow left!\n");
+	t_general *g;
+
+	g = (t_general *)general;
+	g->scene->camera.x -= cos(g->scene->camera.y) * STEPS;
+	g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
 }
 void up_on(void *general)
 {
-	t_general *g = general;
-	g->scene->camera.y++;
+	t_general *g;
+
+	g = (t_general *)general;
+	g->scene->camera.x -= sin(g->scene->camera.y) * STEPS;
+	g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
 }
 
 void right_on(void *general)
 {
-	t_general *g = general;
-	g->scene->camera.x++;
-	printf("arrow right!\n");
+	t_general *g;
+
+	g = (t_general *)general;
+	g->scene->camera.x += cos(g->scene->camera.y) * STEPS;
+	g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
 }
 
 void down_on(void *general)
 {
-	t_general *g = general;
-	g->scene->camera.y--;
-	(void)general;
-	printf("arrow down!\n");
+	t_general *g;
+
+	g = (t_general *)general;
+	g->scene->camera.x += sin(g->scene->camera.y) * STEPS;
+	g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
 }
