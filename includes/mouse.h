@@ -2,6 +2,7 @@
 #define MOUSE_H
 
 # define CLK_LEFT 1
+# define CLK_RIGHT 3
 
 typedef struct s_mouse
 {

@@ -51,5 +51,10 @@ int on_click_event(int button, int x, int y, t_general *g)
 			printf("Cilinder\n");
 		}
     }
+	if(button == CLK_RIGHT)
+	{
+		g->selected = NULL;
+		g->selected_type = -1;
+	}
 	return(0);
 }
