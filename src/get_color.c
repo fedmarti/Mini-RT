@@ -55,7 +55,6 @@ int ambient_color(unsigned int color, float ratio)
 
 int get_color(t_vec3 raydir, t_scene *scene)
 {
-	// int color;
 	unsigned int i; 
 	t_cyl_utils data;
 	t_hit	rayhit;
@@ -63,7 +62,6 @@ int get_color(t_vec3 raydir, t_scene *scene)
 	
 	rayhit = (t_hit){INFINITY, NULL, Void_shape};
 	i = -1;
-	// color = apply_ambient_light(scene->ambient.ratio,scene->ambient.color);
 	while (++i < scene->shape_n)
 	{
 		temp_hit = hit_shape(&scene->shapes[i], &scene->camera, &data, &raydir);
@@ -71,7 +69,7 @@ int get_color(t_vec3 raydir, t_scene *scene)
 			rayhit = temp_hit;
 	}
 	if (rayhit.type == Cylinder)
-		return(calculate_cylinder_color(rayhit.target, &data, scene, raydir));
+		return(calculate_cylinder_c(rayhit.target, &data, scene, raydir));
 	else if (rayhit.type == Plane)
 		return(calculate_plane_color(rayhit.target, scene, raydir, rayhit.t));
 	else if (rayhit.type == Sphere)

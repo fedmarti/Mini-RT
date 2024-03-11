@@ -72,7 +72,7 @@ t_vec3	get_perpendicular_dir(t_cyl_utils *data);
 float hit_cyl(t_cylinder *cyl, t_vec3 origin, t_vec3 *raydir, t_cyl_utils *data);
 float hit_sphere(t_sphere *sphere, t_vec3 origin, t_vec3 *raydir);
 float hit_plane(t_plane *plane, t_vec3 origin, t_vec3 *raydir);
-int calculate_cylinder_color(t_cylinder *cyl, t_cyl_utils *data, t_scene *scene, t_vec3 raydir);
+int calculate_cylinder_c(t_cylinder *cyl, t_cyl_utils *data, t_scene *scene, t_vec3 raydir);
 int calculate_sphere_color(t_sphere *sphere, t_scene *scene, t_vec3 raydir, float t);
 int calculate_plane_color(t_plane *plane, t_scene *scene, t_vec3 raydir, float t);
 t_vec3 calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_vec3 base_col, t_light light);

@@ -6,14 +6,14 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/28 18:27:05 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/03/11 21:58:00 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend, t_cylinder *cyl,
-		t_cyl_utils *data)
+int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend,
+			t_cylinder *cyl, t_cyl_utils *data)
 {
 	float	a;
 	float	b;
@@ -60,14 +60,15 @@ float	get_t(t_cyl_utils *data, t_cylinder *cyl)
 }
 
 void	init_data_basic(t_cyl_utils *data, t_vec3 *origin, t_vec3 *raydir,
-		t_cylinder *cyl)
+					t_cylinder *cyl)
 {
 	*data = (t_cyl_utils){0};
 	data->origin = *origin;
 	data->raydir = *raydir;
 	data->oc = vec3_substract(data->origin, (t_vec3){cyl->x, cyl->y, cyl->z});
 	data->min_t = INFINITY;
-	data->axis_normalize = vec3_normalize((t_vec3){cyl->normal_x, cyl->normal_y,
+	data->axis_normalize = vec3_normalize((t_vec3){cyl->normal_x,
+			cyl->normal_y,
 			cyl->normal_z});
 }
 
@@ -84,13 +85,13 @@ int	calculate_base(t_cylinder *cyl, t_cyl_utils *data)
 		{
 			if (distance(vec3_add((t_vec3){cyl->x, cyl->y, cyl->z},
 					vec3_scale(data->axis_normalize, cyl->height * i)),
-				point_at_parameter(data->origin, data->raydir,
-					t_base)) <= (cyl->diameter / 2))
+				point_at_parameter(data->origin, data->raydir, t_base))
+						<= (cyl->diameter / 2))
 			{
 				data->min_t = t_base;
 				data->hit = true;
 				data->flag = Base;
-				if(i == 0)
+				if (i == 0)
 					data->base_is_top = true;
 				else
 					data->base_is_top = false;
@@ -100,7 +101,8 @@ int	calculate_base(t_cylinder *cyl, t_cyl_utils *data)
 	return (data->hit);
 }
 
-float	hit_cyl(t_cylinder *cyl, t_vec3 origin, t_vec3 *raydir, t_cyl_utils *data)
+float	hit_cyl(t_cylinder *cyl, t_vec3 origin, t_vec3 *raydir,
+				t_cyl_utils *data)
 {
 	t_vec3	oc_perpend;
 	t_vec3	dir_perpend;
