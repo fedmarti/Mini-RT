@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calc.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 21:39:12 by shhuang           #+#    #+#             */
+/*   Updated: 2024/03/11 21:40:17 by shhuang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
-float dot(t_vec3 u, t_vec3 v)
+float	dot(t_vec3 u, t_vec3 v)
 {
-	return(u.x*v.x + u.y * v.y + u.z * v.z);
+	return (u.x * v.x + u.y * v.y + u.z * v.z);
 }
 
 t_vec3	point_at_parameter(t_vec3 origin, t_vec3 raydirection, float t)
