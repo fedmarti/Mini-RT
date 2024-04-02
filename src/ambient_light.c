@@ -1,52 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ambient_light.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 21:20:55 by shhuang           #+#    #+#             */
+/*   Updated: 2024/03/11 21:25:50 by shhuang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
-int apply_ambient_light(int color, float intensity, unsigned int ambient_light_color)
+int	apply_ambient_light(int color, float intensity, unsigned int ambient_l)
 {
-    int c_rgb[3];
-	int a_rgb[3];
-    int i;
-	int save_orig_color;
-
-	i=0;
-    c_rgb[0] = (color >> 16) & 0xFF;
-    c_rgb[1] = (color >> 8) & 0xFF;
-    c_rgb[2] = color & 0xFF;
-    a_rgb[0] = (ambient_light_color >> 16) & 0xFF;
-    a_rgb[1] = (ambient_light_color >> 8) & 0xFF;
-    a_rgb[2] = ambient_light_color & 0xFF;
-    while(i < 3)
-    {
-		save_orig_color = c_rgb[i] * intensity;
-        c_rgb[i] = (int)(save_orig_color + a_rgb[i] * intensity);
-        if(c_rgb[i] > 255)
-            c_rgb[i] = 255;
-		i++;
-    }
-    return (c_rgb[0] << 16) | (c_rgb[1] << 8) | c_rgb[2];
-} 
-
-
-void apply_ambient(t_scene *scene)
-{
-	int i;
+	int	c_rgb[3];
+	int	a_rgb[3];
+	int	i;
+	int	save_orig_color;
 
 	i = 0;
-	while(i < scene->shape_n)
+	c_rgb[0] = (color >> 16) & 0xFF;
+	c_rgb[1] = (color >> 8) & 0xFF;
+	c_rgb[2] = color & 0xFF;
+	a_rgb[0] = (ambient_l >> 16) & 0xFF;
+	a_rgb[1] = (ambient_l >> 8) & 0xFF;
+	a_rgb[2] = ambient_l & 0xFF;
+	while (i < 3)
 	{
-		if(scene->shapes[i].type == Plane)
+		save_orig_color = c_rgb[i] * intensity;
+		c_rgb[i] = (int)(save_orig_color + a_rgb[i] * intensity);
+		if (c_rgb[i] > 255)
+			c_rgb[i] = 255;
+		i++;
+	}
+	return ((c_rgb[0] << 16) | (c_rgb[1] << 8) | c_rgb[2]);
+}
+
+void	apply_ambient(t_scene *scene)
+{
+	int	i;
+
+	i = 0;
+	while (i < scene->shape_n)
+	{
+		if (scene->shapes[i].type == Plane)
 		{
-			scene->shapes[i].shape.plane.color = 
-			apply_ambient_light(scene->shapes[i].shape.plane.color, scene->ambient.ratio, scene->ambient.color);
+			scene->shapes[i].shape.plane.color = apply_ambient_light(
+					scene->shapes[i].shape.plane.color,
+					scene->ambient.ratio, scene->ambient.color);
 		}
-		else if(scene->shapes[i].type == Sphere)
+		else if (scene->shapes[i].type == Sphere)
 		{
-			scene->shapes[i].shape.sphere.color =
-			apply_ambient_light(scene->shapes[i].shape.sphere.color, scene->ambient.ratio, scene->ambient.color);
+			scene->shapes[i].shape.sphere.color = apply_ambient_light(
+					scene->shapes[i].shape.sphere.color,
+					scene->ambient.ratio, scene->ambient.color);
 		}
-		else if(scene->shapes[i].type == Cylinder)
+		else if (scene->shapes[i].type == Cylinder)
 		{
-			scene->shapes[i].shape.cylinder.color = 
-			apply_ambient_light(scene->shapes[i].shape.cylinder.color, scene->ambient.ratio, scene->ambient.color);
+			scene->shapes[i].shape.cylinder.color = apply_ambient_light(
+					scene->shapes[i].shape.cylinder.color,
+					scene->ambient.ratio, scene->ambient.color);
 		}
 		i++;
 	}
