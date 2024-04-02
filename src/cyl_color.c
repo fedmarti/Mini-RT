@@ -15,22 +15,21 @@
 // 	return(color);
 // }
 
-int calculate_cylinder_color(t_cylinder *cyl, t_cyl_utils *data, t_scene *scene, t_vec3 raydir)
+t_vec3	cylinder_hit_norm(t_cylinder *cyl, enum e_cyl_hit flag, t_vec3 ht_point)
 {
-    t_vec3 hit_point;
-    t_vec3 norm;
+	t_vec3 norm;
 
-    if(data->flag == Inside_Surface)
-        return(cyl->color);
-    hit_point = vec3_add((t_vec3){scene->camera.x, scene->camera.y, scene->camera.z}, vec3_scale(raydir, data->min_t));
-	if(data->flag == Base)
+	if (flag == Inside_Surface || flag == Outside_Surface)
 	{
-		if(data->base_is_top)
-			norm = vec3_normalize((t_vec3){cyl->normal_x, cyl->normal_y, cyl->normal_z});
-		else
-			norm = vec3_normalize(vec3_invert((t_vec3){cyl->normal_x, cyl->normal_y, cyl->normal_z}));
+		norm = vec3_normalize(vec3_substract(ht_point, \
+		(t_vec3){cyl->x, cyl->y, cyl->z}));
+		if (flag == Inside_Surface)
+			return (vec3_invert(norm));
+		return (norm);
 	}
-    else
-        norm = vec3_normalize(vec3_substract(hit_point, (t_vec3){cyl->x, cyl->y, cyl->z}));
-    return(loop_light(scene, hit_point, norm, cyl->color));
+	if (flag == Base_Top)
+		return (cyl->normal);
+	else if (flag == Base_Bottom)
+		return (vec3_invert(cyl->normal));
+	return ((t_vec3){0});
 }

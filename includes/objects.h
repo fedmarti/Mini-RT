@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/03/01 13:47:14 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/02 23:08:48 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
 # define NOBJECTTYPES 6
+
+typedef struct s_vector3d
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_vec3;
 
 enum e_shape_type
 {
@@ -29,9 +36,7 @@ typedef struct s_plane
 	float			x;
 	float			y;
 	float			z;
-	float			normal_x;
-	float			normal_y;
-	float			normal_z;
+	t_vec3			normal;
 	unsigned int	color;
 }	t_plane;
 
@@ -49,9 +54,7 @@ typedef struct s_cylinder
 	float			x;
 	float			y;
 	float			z;
-	float			normal_x;
-	float			normal_y;
-	float			normal_z;
+	t_vec3			normal;
 	float			diameter;
 	float			height;
 	unsigned int	color;
@@ -93,9 +96,7 @@ typedef struct s_camera
 	float	x;
 	float	y;
 	float	z;
-	float	dir_x;
-	float	dir_y;
-	float	dir_z;
+	t_vec3	dir;
 	float	fov_degrees;
 
 }	t_camera;
@@ -110,5 +111,8 @@ typedef struct s_scene
 	unsigned short	light_n;
 	// t_image			render;
 }	t_scene;
+
+int		get_shape_color(t_shape *shape);
+t_vec3	get_shape_position(t_shape *shape);
 
 #endif

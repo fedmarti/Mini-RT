@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:44:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/27 21:26:02 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:21:05 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,20 @@ t_camera	camera_init(t_list *tokens)
 	interface.y = &camera.y;
 	interface.z = &camera.z;
 	parse_triplet(interface, tokens);
-	interface.x = &camera.dir_x;
-	interface.y = &camera.dir_y;
-	interface.z = &camera.dir_z;
+	interface.x = &camera.dir.x;
+	interface.y = &camera.dir.y;
+	interface.z = &camera.dir.z;
 	parse_triplet(interface, tokens->next);
-	len = sqrt((camera.dir_x * camera.dir_x) + (camera.dir_y \
-	* camera.dir_y) + (camera.dir_z * camera.dir_z));
+	len = sqrt((camera.dir.x * camera.dir.x) + (camera.dir.y \
+	* camera.dir.y) + (camera.dir.z * camera.dir.z));
 	if (len == 0)
 	{
-		camera.dir_z = 1;
+		camera.dir.z = 1;
 		len = 1;
 	}
-	camera.dir_x /= len;
-	camera.dir_y /= len;
-	camera.dir_z /= len;
+	camera.dir.x /= len;
+	camera.dir.y /= len;
+	camera.dir.z /= len;
 	camera.fov_degrees = ft_atof(((t_token *)tokens->next->next->content)->str);
 	return (camera);
 }

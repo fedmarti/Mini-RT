@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/27 11:14:29 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/02 23:12:11 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "rt_parsing.h"
 
 //for debugging purposes
+/*
 void	print_scene_content(t_scene *scene)
 {
 	if (!scene)
@@ -63,7 +64,7 @@ void	print_scene_content(t_scene *scene)
 		printf("light n.%u:\n", i);
 		printf(" x:%f, y:%f, z:%f, diameter:%f, color:%X\n", lights[i].x, lights[i].y, lights[i].z, lights[i].brightness, lights[i].color);
 	}
-}
+}*/
 
 int	main(int argc, char **argv)
 {

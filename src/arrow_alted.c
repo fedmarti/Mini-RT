@@ -8,7 +8,7 @@ void alt_left_on(void *general)
 
 	g = (t_general *)general;
 	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir_y+= ROTATE_SPEED;
+		g->scene->camera.dir.y+= ROTATE_SPEED;
 	else
 		*((float *)g->selected + 4) += -ROTATE_SPEED;
 }
@@ -20,7 +20,7 @@ void alt_up_on(void *general)
 	g = (t_general *)general;
 
 	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir_x-= ROTATE_SPEED;
+		g->scene->camera.dir.x-= ROTATE_SPEED;
 	else
 		*((float *)g->selected + 5) += ROTATE_SPEED;
 }
@@ -31,7 +31,7 @@ void alt_right_on(void *general)
 	g = (t_general *)general;
 	
 	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir_y-= ROTATE_SPEED;
+		g->scene->camera.dir.y-= ROTATE_SPEED;
 	else
 		*((float *)g->selected + 4) += ROTATE_SPEED;
 }
@@ -41,7 +41,7 @@ void alt_down_on(void *general)
 
 	g = (t_general *)general;
 	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir_x+= ROTATE_SPEED;
+		g->scene->camera.dir.x+= ROTATE_SPEED;
 	else
 		*((float *)g->selected + 5) += -ROTATE_SPEED;
 }

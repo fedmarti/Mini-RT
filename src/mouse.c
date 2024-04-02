@@ -9,22 +9,24 @@ t_vec3 get_raydir(int x, int y, t_general* g)
 	view_x = (x - g->viewport.image_width /  2.0) * (g->viewport.viewport_width / g->viewport.image_width);
     view_y = -(y - g->viewport.image_height / 2.0) * (g->viewport.viewport_height / g->viewport.image_height);
 	actual_raydir = (t_vec3){view_x, view_y, 1.0};
-	rotate_raydir(&actual_raydir, (t_vec3){g->scene->camera.dir_x, g->scene->camera.dir_y, g->scene->camera.dir_z});
+	rotate_raydir(&actual_raydir, g->scene->camera.dir);
 	return(actual_raydir);
 }
 
 void *select_item(t_vec3 raydir, t_scene *scene, t_general *g)
 {
 	unsigned int i; 
-	t_cyl_utils data;
 	t_hit	rayhit;
 	t_hit	temp_hit;
-	
+	t_ray	ray;
+
+	ray.origin = (t_vec3){scene->camera.x, scene->camera.y, scene->camera.z};
+	ray.dir = raydir;
 	rayhit = (t_hit){INFINITY, NULL, Void_shape};
 	i = -1;
 	while (++i < scene->shape_n)
 	{
-		temp_hit = hit_shape(&scene->shapes[i], &scene->camera, &data, &raydir);
+		temp_hit = hit_shape(&scene->shapes[i], &ray, NULL);
 		if (temp_hit.type != Void_shape && temp_hit.t < rayhit.t)
 			rayhit = temp_hit;
 	}

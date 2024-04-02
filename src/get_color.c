@@ -1,30 +1,48 @@
 #include "minirt.h"
 
-t_hit hit_shape(t_shape	*obj, t_camera *camera, t_cyl_utils *data, t_vec3 *raydir)
+t_hit hit_shape(t_shape *obj, t_ray *ray, enum e_cyl_hit *flag)
 {
 	t_hit	rayhit;
 	
 	rayhit = (t_hit){0};
 	if (obj->type == Sphere)
 	{
-		rayhit.t = hit_sphere(&obj->shape.sphere, (t_vec3){camera->x, camera->y, camera->z}, raydir);
+		rayhit.t = hit_sphere(&obj->shape.sphere, ray);
 	}
 	else if (obj->type == Plane)
 	{
-		rayhit.t = hit_plane(&obj->shape.plane, (t_vec3){camera->x, camera->y, camera->z}, raydir);
+		rayhit.t = hit_plane(&obj->shape.plane, ray);
 	}
 	else if (obj->type == Cylinder)
 	{
-		rayhit.t = hit_cyl(&obj->shape.cylinder, (t_vec3){camera->x, camera->y, camera->z}, raydir, data);
+		rayhit.t = hit_cyl(&obj->shape.cylinder, ray, flag);
 	}
 	if (rayhit.t > 0 && rayhit.t < RAY_LENGTH)
 	{
-		rayhit.target = &obj->shape;
+		rayhit.target = obj;
 		rayhit.type = obj->type;
 	}
 	else
 		rayhit.type = Void_shape;
 	return(rayhit);
+}
+
+t_hit	closest_hit(t_scene	*scene, t_ray *ray, enum e_cyl_hit *flag)
+{
+	unsigned short	i;
+	t_hit			temp_hit;
+	t_hit			rayhit;
+
+	rayhit = (t_hit){INFINITY, NULL, Void_shape};
+	i = 0;
+	while (i < scene->shape_n)
+	{
+		temp_hit = hit_shape(&scene->shapes[i], ray, flag);
+		if (temp_hit.type != Void_shape && temp_hit.t < rayhit.t)
+			rayhit = temp_hit;
+		i++;
+	}
+	return (rayhit);
 }
 
 int point_and_type(float *tmp_closest, t_scene *scene, void **actual_shape, unsigned int i)
@@ -55,26 +73,25 @@ int ambient_color(unsigned int color, float ratio)
 
 int get_color(t_vec3 raydir, t_scene *scene)
 {
-	// int color;
-	unsigned int i; 
-	t_cyl_utils data;
-	t_hit	rayhit;
-	t_hit	temp_hit;
-	
-	rayhit = (t_hit){INFINITY, NULL, Void_shape};
-	i = -1;
-	// color = apply_ambient_light(scene->ambient.ratio,scene->ambient.color);
-	while (++i < scene->shape_n)
-	{
-		temp_hit = hit_shape(&scene->shapes[i], &scene->camera, &data, &raydir);
-		if (temp_hit.type != Void_shape && temp_hit.t < rayhit.t)
-			rayhit = temp_hit;
-	}
+	t_hit			rayhit;
+	t_vec3			hit_point;
+	enum e_cyl_hit	flag;
+	t_ray			ray;
+	t_vec3			hit_normal;
+
+	ray.origin = (t_vec3){scene->camera.x, scene->camera.y, scene->camera.z};
+	ray.dir = raydir;
+	rayhit = closest_hit(scene, &ray, &flag);
+	if (rayhit.type == Void_shape)
+		return (ambient_color(scene->ambient.color, scene->ambient.ratio));
+	hit_point = vec3_add(ray.origin, vec3_scale(ray.dir, rayhit.t));
 	if (rayhit.type == Cylinder)
-		return(calculate_cylinder_color(rayhit.target, &data, scene, raydir));
+		hit_normal = cylinder_hit_norm(&rayhit.target->shape.cylinder, flag, hit_point);
 	else if (rayhit.type == Plane)
-		return(calculate_plane_color(rayhit.target, scene, raydir, rayhit.t));
+		hit_normal = plane_hit_norm(&rayhit.target->shape.plane, hit_point);
 	else if (rayhit.type == Sphere)
-		return(calculate_sphere_color(rayhit.target, scene, raydir, rayhit.t));
-	return(ambient_color(scene->ambient.color, scene->ambient.ratio));
+		hit_normal = sphere_hit_norm(&rayhit.target->shape.sphere, hit_point);
+	else
+		return(0);
+	return (loop_light(scene, hit_point, hit_normal, rayhit.target));
 }

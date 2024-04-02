@@ -28,6 +28,7 @@ plane.c \
 sphere_color.c \
 plane_color.c \
 light.c \
+shape.c
 
 MLX=./minilibx-linux/libmlx.a
 

@@ -43,7 +43,7 @@ void render(t_scene *scene, t_viewport viewport, t_window *program)
 			viewport_x = (viewport.x - viewport.image_width /  2.0) * (viewport.viewport_width / viewport.image_width);
             viewport_y = -(viewport.y - viewport.image_height / 2.0) * (viewport.viewport_height / viewport.image_height);
 			viewport.actual_raydir = (t_vec3){viewport_x, viewport_y, 1.0};
-			rotate_raydir(&viewport.actual_raydir, (t_vec3){scene->camera.dir_x, scene->camera.dir_y, scene->camera.dir_z});
+			rotate_raydir(&viewport.actual_raydir, (t_vec3){scene->camera.dir.x, scene->camera.dir.y, scene->camera.dir.z});
 			color = get_color(viewport.actual_raydir, scene);
 			program->img_data[(int)viewport.x + (int)viewport.y * (int)viewport.image_width] = color;
 			++viewport.x;

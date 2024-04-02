@@ -6,7 +6,7 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:55:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/26 20:48:32 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:31:56 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@
 # include "objects.h"
 # include <math.h>
 
-typedef struct s_vector3d
-{
-	float	x;
-	float	y;
-	float	z;
-}	t_vec3;
-
 typedef struct s_ray_hit
 {
 	float				t;
-	void				*target;
+	t_shape				*target;
 	enum e_shape_type	type;
 }	t_hit;
+
+
+
+typedef struct s_ray
+{
+	t_vec3			origin;
+	t_vec3			dir;
+	float			t;
+}	t_ray;
+
 
 typedef float	t_radians;
 typedef float	t_degrees;

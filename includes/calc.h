@@ -7,22 +7,17 @@ enum e_cyl_hit
 {
 	Outside_Surface,
 	Inside_Surface,
-	Base
+	Base_Top,
+	Base_Bottom,
+	Missed
 };
 
 typedef struct s_cyl_utils
 {
-	t_vec3			oc;
-	t_vec3			raydir;
-	t_vec3			origin;
-	t_vec3			axis_normalize;
 	float			dot_dir_axis;
 	float			dot_oc_axis;
-	float			min_t;
-	enum e_cyl_hit	flag;
-	float			t[2];
-	bool			hit;
-	bool			base_is_top;
+	t_vec3			oc_perpend;
+	t_vec3			dir_perpend;
 } t_cyl_utils;
 
 #endif

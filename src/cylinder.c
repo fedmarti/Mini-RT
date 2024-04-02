@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/02/28 18:27:05 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/02 23:25:37 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend, t_cylinder *cyl,
-		t_cyl_utils *data)
+int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend, \
+t_cylinder *cyl, float t[2])
 {
 	float	a;
 	float	b;
@@ -30,89 +30,100 @@ int	get_cyl_magnitude(t_vec3 dir_perpend, t_vec3 oc_perpend, t_cylinder *cyl,
 		return (0);
 	}
 	sqrt_discr = sqrt(discriminant);
-	data->t[0] = (-b - sqrt_discr) / (2 * a);
-	data->t[1] = (-b + sqrt_discr) / (2 * a);
+	t[0] = (-b - sqrt_discr) / (2 * a);
+	t[1] = (-b + sqrt_discr) / (2 * a);
 	return (1);
 }
 
-float	get_t(t_cyl_utils *data, t_cylinder *cyl)
-{
-	float	coord_axis_cyl_t0;
-	float	coord_axis_cyl_t1;
-
-	coord_axis_cyl_t0 = data->dot_oc_axis + data->t[0] * data->dot_dir_axis;
-	coord_axis_cyl_t1 = data->dot_oc_axis + data->t[1] * data->dot_dir_axis;
-	if (data->t[0] > 0 && coord_axis_cyl_t0 >= 0
-		&& coord_axis_cyl_t0 <= cyl->height && data->t[0] < data->min_t)
-	{
-		data->min_t = data->t[0];
-		data->flag = Outside_Surface;
-		data->hit = true;
-	}
-	if (data->t[1] > 0 && coord_axis_cyl_t1 >= 0
-		&& coord_axis_cyl_t1 <= cyl->height && data->t[1] < data->min_t)
-	{
-		data->min_t = data->t[1];
-		data->flag = Inside_Surface;
-		data->hit = true;
-	}
-	return (data->min_t);
-}
-
-void	init_data_basic(t_cyl_utils *data, t_vec3 *origin, t_vec3 *raydir,
-		t_cylinder *cyl)
-{
-	*data = (t_cyl_utils){0};
-	data->origin = *origin;
-	data->raydir = *raydir;
-	data->oc = vec3_substract(data->origin, (t_vec3){cyl->x, cyl->y, cyl->z});
-	data->min_t = INFINITY;
-	data->axis_normalize = vec3_normalize((t_vec3){cyl->normal_x, cyl->normal_y,
-			cyl->normal_z});
-}
-
-int	calculate_base(t_cylinder *cyl, t_cyl_utils *data)
+int	calculate_base(t_cylinder *cyl, enum e_cyl_hit *flag, \
+t_ray *ray, float t_base[2])
 {
 	int		i;
-	float	t_base;
+	bool	hit;
 
+	hit = (ray->t != INFINITY);
 	i = -1;
 	while (++i < 2)
 	{
-		t_base = ((cyl->height * i - data->dot_oc_axis) / data->dot_dir_axis);
-		if (t_base > 0 && t_base < data->min_t)
+		if (t_base[i] > 0 && t_base[i] < ray->t)
 		{
 			if (distance(vec3_add((t_vec3){cyl->x, cyl->y, cyl->z},
-					vec3_scale(data->axis_normalize, cyl->height * i)),
-				point_at_parameter(data->origin, data->raydir,
-					t_base)) <= (cyl->diameter / 2))
+					vec3_scale(cyl->normal, cyl->height * i)),
+				point_at_parameter(ray->origin, ray->dir,
+					t_base[i])) <= (cyl->diameter / 2))
 			{
-				data->min_t = t_base;
-				data->hit = true;
-				data->flag = Base;
-				if(i == 0)
-					data->base_is_top = true;
-				else
-					data->base_is_top = false;
+				ray->t = t_base[i];
+				hit = true;
+				if (flag && i == 0)
+					*flag = Base_Top;
+				else if (flag)
+					*flag = Base_Bottom;
 			}
 		}
 	}
-	return (data->hit);
+	return (hit);
 }
 
-float	hit_cyl(t_cylinder *cyl, t_vec3 origin, t_vec3 *raydir, t_cyl_utils *data)
+float	get_t(t_cyl_utils *data, t_cylinder *cyl, float t[2], \
+enum e_cyl_hit *flag)
 {
-	t_vec3	oc_perpend;
-	t_vec3	dir_perpend;
+	float	coord_axis_cyl_t0;
+	float	coord_axis_cyl_t1;
+	float	min_t;
 
-	init_data_basic(data, &origin, raydir, cyl);
-	oc_perpend = get_perpendicular_oc(data);
-	dir_perpend = get_perpendicular_dir(data);
-	if (!get_cyl_magnitude(dir_perpend, oc_perpend, cyl, data))
+	min_t = INFINITY;
+	coord_axis_cyl_t0 = data->dot_oc_axis + t[0] * data->dot_dir_axis;
+	coord_axis_cyl_t1 = data->dot_oc_axis + t[1] * data->dot_dir_axis;
+	if (t[0] > 0 && coord_axis_cyl_t0 >= 0
+		&& coord_axis_cyl_t0 <= cyl->height && t[0] < min_t)
+	{
+		min_t = t[0];
+		if (flag)
+			*flag = Outside_Surface;
+	}
+	if (t[1] > 0 && coord_axis_cyl_t1 >= 0
+		&& coord_axis_cyl_t1 <= cyl->height && t[1] < min_t)
+	{
+		min_t = t[1];
+		if (flag)
+			*flag = Inside_Surface;
+	}
+	return (min_t);
+}
+
+t_cyl_utils	cyl_data_init(t_cylinder *cyl, t_ray *ray)
+{
+	t_vec3		oc;
+	t_cyl_utils	data;
+
+	data = (t_cyl_utils){0};
+	oc = vec3_substract(ray->origin, (t_vec3){cyl->x, cyl->y, cyl->z});
+	data.dot_dir_axis = dot(ray->origin, cyl->normal);
+	data.dot_oc_axis = dot(oc, cyl->normal);
+	data.oc_perpend = \
+	vec3_substract(oc, vec3_scale(cyl->normal, data.dot_oc_axis));
+	data.dir_perpend = \
+	vec3_substract(ray->dir, vec3_scale(cyl->normal, data.dot_dir_axis));
+	return (data);
+}
+
+float	hit_cyl(t_cylinder *cyl, t_ray *ray, enum e_cyl_hit *flag)
+{
+	t_cyl_utils	data;
+	float		t[2];
+	float		t_base[2];
+
+	data = cyl_data_init(cyl, ray);
+	t[0] = 0;
+	t[1] = 0;
+	t_base[0] = (data.dot_oc_axis) / data.dot_dir_axis * -1;
+	t_base[1] = ((cyl->height - data.dot_oc_axis) / data.dot_dir_axis);
+	if (flag)
+		*flag = Missed;
+	if (!get_cyl_magnitude(data.dir_perpend, data.oc_perpend, cyl, t))
 		return (0);
-	data->min_t = get_t(data, cyl);
-	data->hit = calculate_base(cyl, data);
-	if (data->hit)
-		return (data->min_t);
+	ray->t = get_t(&data, cyl, t, flag);
+	if (calculate_base(cyl, flag, ray, t_base))
+		return (ray->t);
 	return (0);
 }

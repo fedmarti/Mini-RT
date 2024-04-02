@@ -1,6 +1,6 @@
 #include "minirt.h"
 #include "window.h"
-#include <FL/math.h>
+#include <math.h>
 
 void init_viewport(t_general *general, t_camera *camera)
 {
