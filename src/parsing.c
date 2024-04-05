@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/27 00:00:09 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:36:57 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "objects.h"
 #include "symbols.h"
 
-void remove_comments(char **file);
+void	remove_comments(char **file);
 t_scene	*parse_tokens(t_list *tokens);
 
 /*

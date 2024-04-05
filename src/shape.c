@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 23:19:33 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 01:27:38 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:54:49 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_vec3	get_shape_position(t_shape *shape)
 	return (v);
 }
 
-
 static void	inteface_coordinates(t_shape *shape, float *coordinates[3])
 {
 	if (shape->type == Cylinder)
@@ -78,7 +77,6 @@ static void	inteface_coordinates(t_shape *shape, float *coordinates[3])
 	else
 		ft_bzero(coordinates, sizeof(float *[3]));
 }
-
 
 void	pointer_to_position(t_shape	*shape, float **x, float **y, float **z)
 {

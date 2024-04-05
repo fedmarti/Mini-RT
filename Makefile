@@ -17,6 +17,7 @@ arrow_shifted.c \
 arrow.c \
 viewport.c \
 vec3.c \
+vec3_2.c \
 render_loop.c \
 get_color.c \
 calc.c \

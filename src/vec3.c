@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/28 18:28:47 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/05 21:40:06 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 t_vec3	vec3_normalize(t_vec3 v)
 {
 	const float	len = (float)sqrt(pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2));
+
 	if (len > 0.0001)
-        return (t_vec3){v.x / len, v.y / len, v.z / len};
+		return ((t_vec3){v.x / len, v.y / len, v.z / len});
 	return (v);
 }
 
@@ -39,14 +40,3 @@ t_vec3	vec3_add(t_vec3 v1, t_vec3 v2)
 {
 	return ((t_vec3){v1.x + v2.x, v1.y + v2.y, v1.z + v2.z});
 }
-
-t_vec3	vec3_scale(t_vec3 v, float scalar)
-{
-	return ((t_vec3){v.x * scalar, v.y * scalar, v.z * scalar});
-}
-
-t_vec3	vec3_invert(t_vec3 v)
-{
-	return ((t_vec3){-v.x, -v.y, -v.z});
-}
-

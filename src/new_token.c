@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 22:12:52 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/27 00:41:42 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:07:33 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@ enum e_token_type	number_type(float num)
 
 enum e_token_type	triplet_check(t_token *new)
 {
-	float				nums[3];
+	float				n[3];
 	enum e_token_type	possible_types[5];
 	unsigned int		i;
 
-	parse_triplet((t_trip_interface){&nums[0], &nums[1], &nums[2]}, &(t_list){new, 0});
-	ft_memcpy(possible_types, (enum e_token_type[]){NumberTripletRatio,\
+	parse_triplet((t_trip_interface){&n[0], &n[1], &n[2]}, &(t_list){new, 0});
+	ft_memcpy(possible_types, (enum e_token_type[]){NumberTripletRatio, \
 	NumberTripletNormal, NumberTripletColor, NumberTriplet, eNull}, 20);
 	i = 0;
-	while (i < sizeof(nums) / sizeof(*nums))
+	while (i < sizeof(n) / sizeof(*n))
 	{
-		if (nums[i] < -1 || nums[i] > 255)
+		if (n[i] < -1 || n[i] > 255)
 			return (NumberTriplet);
-		if(nums[i] < 0)
+		if (n[i] < 0)
 		{
 			remove_type(possible_types, NumberTripletRatio);
 			remove_type(possible_types, NumberTripletColor);
 		}
-		if (nums[i] > 1)
+		if (n[i] > 1)
 		{
 			remove_type(possible_types, NumberTripletRatio);
 			remove_type(possible_types, NumberTripletNormal);

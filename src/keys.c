@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:17:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/04 21:55:51 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:55:29 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	handle_keypress(int pressedKey, t_general *general)
 		close_x(general);
 	return (0);
 }
-
 
 int	handle_keyrelease(int releasedKey, t_general *general)
 {

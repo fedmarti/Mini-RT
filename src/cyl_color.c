@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cyl_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:40:44 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/02 23:59:28 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:54:21 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 t_vec3	cylinder_hit_norm(t_cylinder *cyl, enum e_cyl_hit flag, t_vec3 ht_point)
 {
-	t_vec3 norm;
+	t_vec3	norm;
 
 	if (flag == Inside_Surface || flag == Outside_Surface)
 	{

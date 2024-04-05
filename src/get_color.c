@@ -6,12 +6,11 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:59:38 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/04 20:46:38 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:10:24 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
 
 t_hit	hit_shape(t_shape *obj, t_ray *ray, enum e_cyl_hit *flag)
 {
@@ -58,6 +57,7 @@ t_hit	closest_hit(t_scene	*scene, t_ray *ray, enum e_cyl_hit *flag)
 	return (rayhit);
 }
 
+/*
 int	point_and_type(float *tmp_closest, t_scene *scene, void **actual_shape,
 		unsigned int i)
 {
@@ -69,7 +69,7 @@ int	point_and_type(float *tmp_closest, t_scene *scene, void **actual_shape,
 	else if (scene->shapes[i].type == Cylinder)
 		*actual_shape = &scene->shapes[i].shape.cylinder;
 	return (scene->shapes[i].type);
-}
+}*/
 
 void	init_color_utils(float *tmp_closest, unsigned int *i,
 			int *closest_shape, void **actual_shape)
@@ -113,4 +113,3 @@ int	get_color(t_vec3 raydir, t_scene *scene)
 		return (0);
 	return (loop_light(scene, hit_point, hit_normal, rayhit.target));
 }
-

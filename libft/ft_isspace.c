@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:32:39 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/22 21:36:16 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:36:24 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	return ((c == ' ') \
 	|| (c == '\t') || (c == '\n') || (c == '\v') || (c == '\f') || (c == '\r'));

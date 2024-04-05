@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/04 21:13:15 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:18:40 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@
 void	free_scene(t_scene *scene);
 
 # define RAY_LENGTH 1000.0F
+# define WIN_NAME_LEN 30
 
 #endif

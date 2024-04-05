@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:02:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 02:04:45 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:06:02 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ t_vec3 base_col, t_light light)
 t_vec3	int_to_vec3(int color)
 {
 	return ((t_vec3){
-	((color >> 16) & 0xFF) / 255.0f,
-	((color >> 8) & 0xFF) / 255.0f,
-	(color & 0xFF) / 255.0f
+		((color >> 16) & 0xFF) / 255.0f,
+		((color >> 8) & 0xFF) / 255.0f,
+		(color & 0xFF) / 255.0f
 	});
 }
 

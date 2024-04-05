@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:26:34 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/02/04 02:25:22 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/05 21:35:24 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ typedef struct s_scene
 	unsigned short	shape_n;
 	t_light			*lights;
 	unsigned short	light_n;
-	// t_image			render;
 }	t_scene;
-
 
 #endif

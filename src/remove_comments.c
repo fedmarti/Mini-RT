@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   remove_comments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:55:29 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/01/27 00:44:50 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:54:03 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void remove_comments(char **file)
+void	remove_comments(char **file)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (file[i])

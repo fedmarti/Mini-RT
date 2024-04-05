@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:25:56 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/02 23:22:34 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:08:51 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_cylinder	cylinder_init(t_list *tokens)
 {
 	t_cylinder			cylinder;
 	t_trip_interface	interface;
-	float 				len;
+	float				len;
 
 	interface = (t_trip_interface){&cylinder.x, &cylinder.y, &cylinder.z};
 	parse_triplet(interface, tokens);

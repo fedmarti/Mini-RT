@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/04 22:31:11 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:36:03 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_cylinder
 	unsigned int	color;
 }	t_cylinder;
 
-
 union u_shape
 {
 	t_plane		plane;
@@ -109,7 +108,6 @@ typedef struct s_scene
 	unsigned short	shape_n;
 	t_light			*lights;
 	unsigned short	light_n;
-	// t_image			render;
 }	t_scene;
 
 int		get_shape_color(t_shape *shape);
