@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrow_alted.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:26:22 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/02 23:58:41 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:10:27 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	alt_left_on(void *general)
 	t_general	*g;
 
 	g = (t_general *)general;
-	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir.y+= ROTATE_SPEED;
-	else
-		*((float *)g->selected + 4) += -ROTATE_SPEED;
+	if (g->selected == NULL || g->selected->type == Sphere)
+		g->scene->camera.dir.y += ROTATE_SPEED;
+	// else
+		// *((float *)g->selected + 4) += -ROTATE_SPEED;
 }
 
 void	alt_up_on(void *general)
@@ -31,10 +31,10 @@ void	alt_up_on(void *general)
 
 	g = (t_general *)general;
 
-	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir.x-= ROTATE_SPEED;
-	else
-		*((float *)g->selected + 5) += ROTATE_SPEED;
+	if (g->selected == NULL || g->selected->type == Sphere)
+		g->scene->camera.dir.x -= ROTATE_SPEED;
+	// else
+		// *((float *)g->selected + 5) += ROTATE_SPEED;
 }
 
 void	alt_right_on(void *general)
@@ -42,11 +42,11 @@ void	alt_right_on(void *general)
 	t_general	*g;
 
 	g = (t_general *)general;
-	
-	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir.y-= ROTATE_SPEED;
-	else
-		*((float *)g->selected + 4) += ROTATE_SPEED;
+
+	if (g->selected == NULL || g->selected->type == Sphere)
+		g->scene->camera.dir.y -= ROTATE_SPEED;
+	// else
+		// *((float *)g->selected + 4) += ROTATE_SPEED;
 }
 
 void	alt_down_on(void *general)
@@ -54,8 +54,8 @@ void	alt_down_on(void *general)
 	t_general	*g;
 
 	g = (t_general *)general;
-	if(g->selected == NULL || g->selected_type == Sphere)
-		g->scene->camera.dir.x+= ROTATE_SPEED;
-	else
-		*((float *)g->selected + 5) += -ROTATE_SPEED;
+	if (g->selected == NULL || g->selected->type == Sphere)
+		g->scene->camera.dir.x += ROTATE_SPEED;
+	// else
+		// *((float *)g->selected + 5) += -ROTATE_SPEED;
 }

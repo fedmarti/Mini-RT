@@ -1,10 +1,23 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   window.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 21:41:13 by fedmarti          #+#    #+#             */
+/*   Updated: 2024/04/05 01:23:14 by fedmarti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "minirt.h"
-#include "viewport.h"
+#ifndef WINDOW_H
+# define WINDOW_H
+
+# include "minirt.h"
+# include "viewport.h"
 # define WIN_WIDTH 480.0f
 # define WIN_HEIGHT 260.0f
+# define STEPS 1
 
 
 typedef struct s_window
@@ -14,34 +27,27 @@ typedef struct s_window
 	void	*img_ptr;
 	int		*img_data;
 	float	aspectratio;
-	int 	bits_per_pixel;
-	int 	size_line;
-	int 	endian;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 	char	win_name[30];
-} t_window;
+}	t_window;
 
 typedef struct s_general_info
 {
-	bool help_info;
-	enum e_on_hold special_key;
-	t_window program;
-	int count;
-	void (*handlers[12])(void *general);
-	t_viewport viewport;
-	t_scene *scene;
-	void	*selected;
-	int		selected_type;
-} t_general;
-
-enum plus_minus
-{
-	Plus = +1,
-	Minus = -1
-};
+	bool			help_info;
+	enum e_on_hold	special_key;
+	t_window		program;
+	int				count;
+	void			(*handlers[12])(void *general);
+	t_viewport		viewport;
+	t_scene			*scene;
+	t_shape			*selected;
+}	t_general;
 
 t_window *load_window(t_window *main_window, char *title, t_general *general);
 int close_x(t_general *general);
-int handle_keyrelease (int releasedKey, t_general *general);
+int handle_keyrelease(int releasedKey, t_general *general);
 int handle_keypress(int pressedKey, t_general *general);
 int render_loop(t_general *general);
 
@@ -80,5 +86,5 @@ int apply_ambient_light(int color, float intensity, unsigned int ambientColor);
 t_hit hit_shape(t_shape	*obj, t_ray *ray, enum e_cyl_hit *flag);
 void rotate_raydir(t_vec3 *raydir, t_vec3 camera);
 t_vec3	vec3_invert(t_vec3 v);
-void move_obj(float *val, enum plus_minus sign);
+// void move_obj(float *val, enum e_plus_minus sign);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/02 23:08:48 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/04 22:31:11 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ typedef struct s_scene
 
 int		get_shape_color(t_shape *shape);
 t_vec3	get_shape_position(t_shape *shape);
+// if any of the double pointers are not null they will be set to the pointers 
+//of the shape structure
+void	pointer_to_position(t_shape	*shape, float **x, float **y, float **z);
 
 #endif

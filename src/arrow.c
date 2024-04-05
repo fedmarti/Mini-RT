@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   arrow.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:35:42 by shhuang           #+#    #+#             */
-/*   Updated: 2024/03/11 21:37:27 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/05 01:31:55 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#define STEPS 1
-
-void	move_obj(float *val, enum plus_minus sign)
-{
-	*val += sign;
-}
 
 void	left_on(void *general)
 {
 	t_general	*g;
+	float		*x;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
@@ -29,12 +24,16 @@ void	left_on(void *general)
 		g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
 	}
 	else
-		move_obj(((float *)g->selected + 0), Minus);
+	{
+		pointer_to_position(g->selected, &x, NULL, NULL);
+		*x -= STEPS;
+	}
 }
 
 void	up_on(void *general)
 {
 	t_general	*g;
+	float		*y;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
@@ -43,12 +42,16 @@ void	up_on(void *general)
 		g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
 	}
 	else
-		move_obj(((float *)g->selected + 1), Plus);
+	{
+		pointer_to_position(g->selected, NULL, &y, NULL);
+		*y += STEPS;
+	}
 }
 
 void	right_on(void *general)
 {
 	t_general	*g;
+	float		*x;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
@@ -57,12 +60,16 @@ void	right_on(void *general)
 		g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
 	}
 	else
-		move_obj(((float *)g->selected + 0), Plus);
+	{
+		pointer_to_position(g->selected, &x, NULL, NULL);
+		*x += STEPS;
+	}
 }
 
 void	down_on(void *general)
 {
 	t_general	*g;
+	float		*y;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
@@ -71,5 +78,8 @@ void	down_on(void *general)
 		g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
 	}
 	else
-		move_obj(((float *)g->selected + 1), Minus);
+	{
+		pointer_to_position(g->selected, NULL, &y, NULL);
+		*y -= STEPS;
+	}
 }

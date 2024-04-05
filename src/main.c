@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:11:02 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/02 23:12:11 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:29:34 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	main(int argc, char **argv)
 	t_general	general;
 
 	general = (t_general){0};
-	general.selected_type = -1;
 	if (argc != 2)
 		return(write (2, "Wrong number of arguments\n", 26));
 	scene = parse_rt(argv[1]);

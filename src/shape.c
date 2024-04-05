@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shape.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 23:19:33 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/02 23:02:17 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:27:38 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "objects.h"
 #include "geometry_3d.h"
+#include "libft.h"
 
 //returns the color of the shape (for quick access)
 int	get_shape_color(t_shape *shape)
@@ -51,4 +52,49 @@ t_vec3	get_shape_position(t_shape *shape)
 	else
 		return ((t_vec3){0});
 	return (v);
+}
+
+
+static void	inteface_coordinates(t_shape *shape, float *coordinates[3])
+{
+	if (shape->type == Cylinder)
+	{
+		coordinates[0] = &shape->shape.cylinder.x;
+		coordinates[1] = &shape->shape.cylinder.y;
+		coordinates[2] = &shape->shape.cylinder.z;
+	}
+	else if (shape->type == Sphere)
+	{
+		coordinates[0] = &shape->shape.sphere.x;
+		coordinates[1] = &shape->shape.sphere.y;
+		coordinates[2] = &shape->shape.sphere.z;
+	}
+	else if (shape->type == Plane)
+	{
+		coordinates[0] = &shape->shape.plane.x;
+		coordinates[1] = &shape->shape.plane.y;
+		coordinates[2] = &shape->shape.plane.z;
+	}
+	else
+		ft_bzero(coordinates, sizeof(float *[3]));
+}
+
+
+void	pointer_to_position(t_shape	*shape, float **x, float **y, float **z)
+{
+	float	*coordinates[3];
+
+	inteface_coordinates(shape, coordinates);
+	if (x)
+	{
+		*x = coordinates[0];
+	}
+	if (y)
+	{
+		*y = coordinates[1];
+	}
+	if (z)
+	{
+		*z = coordinates[2];
+	}
 }

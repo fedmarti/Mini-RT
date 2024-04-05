@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:59:38 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/03 00:01:39 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:46:38 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit hit_shape(t_shape *obj, t_ray *ray, enum e_cyl_hit *flag)
+
+t_hit	hit_shape(t_shape *obj, t_ray *ray, enum e_cyl_hit *flag)
 {
 	t_hit	rayhit;
 
@@ -102,13 +103,14 @@ int	get_color(t_vec3 raydir, t_scene *scene)
 		return (ambient_color(scene->ambient.color, scene->ambient.ratio));
 	hit_point = vec3_add(ray.origin, vec3_scale(ray.dir, rayhit.t));
 	if (rayhit.type == Cylinder)
-		hit_normal = cylinder_hit_norm(&rayhit.target->shape.cylinder, flag, hit_point);
+		hit_normal = cylinder_hit_norm(&rayhit.target->shape.cylinder, \
+		flag, hit_point);
 	else if (rayhit.type == Plane)
 		hit_normal = plane_hit_norm(&rayhit.target->shape.plane, hit_point);
 	else if (rayhit.type == Sphere)
 		hit_normal = sphere_hit_norm(&rayhit.target->shape.sphere, hit_point);
 	else
-		return(0);
+		return (0);
 	return (loop_light(scene, hit_point, hit_normal, rayhit.target));
 }
 
