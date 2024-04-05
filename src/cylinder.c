@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/04 20:42:37 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:52:34 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_ray *ray, float t_base[2])
 		if (t_base[i] > 0 && t_base[i] < ray->t)
 		{
 			if (distance(vec3_add((t_vec3){cyl->x, cyl->y, cyl->z},
-					vec3_scale(cyl->normal, cyl->height * i)),
+					vec3_scale(vec3_normalize(cyl->normal), cyl->height * i)),
 				point_at_parameter(ray->origin, ray->dir,
 					t_base[i])) <= (cyl->diameter / 2))
 			{
@@ -95,15 +95,17 @@ t_cyl_utils	cyl_data_init(t_cylinder *cyl, t_ray *ray)
 {
 	t_vec3		oc;
 	t_cyl_utils	data;
+	t_vec3		normalized_to_axis;
 
+	normalized_to_axis = vec3_normalize(cyl->normal);
 	data = (t_cyl_utils){0};
 	oc = vec3_substract(ray->origin, (t_vec3){cyl->x, cyl->y, cyl->z});
-	data.dot_dir_axis = dot(ray->origin, cyl->normal);
-	data.dot_oc_axis = dot(oc, cyl->normal);
+	data.dot_dir_axis = dot(ray->dir, normalized_to_axis);
+	data.dot_oc_axis = dot(oc, normalized_to_axis);
 	data.oc_perpend = \
-	vec3_substract(oc, vec3_scale(cyl->normal, data.dot_oc_axis));
+	vec3_substract(oc, vec3_scale(normalized_to_axis, data.dot_oc_axis));
 	data.dir_perpend = \
-	vec3_substract(ray->dir, vec3_scale(cyl->normal, data.dot_dir_axis));
+	vec3_substract(ray->dir, vec3_scale(normalized_to_axis, data.dot_dir_axis));
 	return (data);
 }
 
@@ -114,8 +116,8 @@ float	hit_cyl(t_cylinder *cyl, t_ray *ray, enum e_cyl_hit *flag)
 	float		t_base[2];
 
 	data = cyl_data_init(cyl, ray);
-	t[0] = 0;
-	t[1] = 0;
+	t[0] = INFINITY;
+	t[1] = INFINITY;
 	t_base[0] = (data.dot_oc_axis) / data.dot_dir_axis * -1;
 	t_base[1] = ((cyl->height - data.dot_oc_axis) / data.dot_dir_axis);
 	if (flag)
