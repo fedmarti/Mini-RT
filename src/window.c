@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:16:29 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 21:31:56 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:10:21 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,28 @@
 
 int	close_x(t_general *general)
 {
-	free(general->scene);
+	t_scene		*scene;
+	t_window	*program;
+
+	scene = general->scene;
+	program = &general->program;
+	if (scene)
+	{
+		if (scene->shape_n && scene->shapes)
+			free(scene->shapes);
+		if (scene->light_n && scene->lights)
+			free(scene->lights);
+		free(scene);
+	}
+	if (program->window)
+		mlx_destroy_window(program->init_ptr, program->window);
+	if (program->img_ptr)
+		mlx_destroy_image(program->init_ptr, program->img_ptr);
+	if (program->init_ptr)
+	{
+		mlx_destroy_display(program->init_ptr);
+		free(program->init_ptr);
+	}
 	exit(1);
 	return (0);
 }
