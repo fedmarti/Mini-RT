@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrow_alted.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:26:22 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/05 01:10:27 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:10:11 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	alt_left_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL || g->selected->type == Sphere)
 		g->scene->camera.dir.y += ROTATE_SPEED;
-	// else
-		// *((float *)g->selected + 4) += -ROTATE_SPEED;
+	else
+		*((float *)g->selected + 4) += -ROTATE_SPEED;
 }
 
 void	alt_up_on(void *general)
@@ -32,9 +32,11 @@ void	alt_up_on(void *general)
 	g = (t_general *)general;
 
 	if (g->selected == NULL || g->selected->type == Sphere)
+	{
 		g->scene->camera.dir.x -= ROTATE_SPEED;
-	// else
-		// *((float *)g->selected + 5) += ROTATE_SPEED;
+	}
+	else
+		*((float *)g->selected + 5) += ROTATE_SPEED;
 }
 
 void	alt_right_on(void *general)
@@ -45,8 +47,8 @@ void	alt_right_on(void *general)
 
 	if (g->selected == NULL || g->selected->type == Sphere)
 		g->scene->camera.dir.y -= ROTATE_SPEED;
-	// else
-		// *((float *)g->selected + 4) += ROTATE_SPEED;
+	else
+		*((float *)g->selected + 4) += ROTATE_SPEED;
 }
 
 void	alt_down_on(void *general)
@@ -56,6 +58,6 @@ void	alt_down_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL || g->selected->type == Sphere)
 		g->scene->camera.dir.x += ROTATE_SPEED;
-	// else
-		// *((float *)g->selected + 5) += -ROTATE_SPEED;
+	else
+		*((float *)g->selected + 5) += -ROTATE_SPEED;
 }

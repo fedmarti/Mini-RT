@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.cpp": "cpp",
+		"cmath": "c",
+		"minirt.h": "c"
+	}
+}

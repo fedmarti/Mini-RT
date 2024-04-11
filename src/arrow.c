@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrow.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:35:42 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/05 21:07:46 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:12:06 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@ void	left_on(void *general)
 {
 	t_general	*g;
 	float		*x;
-
+	
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
 		g->scene->camera.x -= cos(g->scene->camera.y) * STEPS;
 		g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+		if (g->scene->camera.dir.x < MINPITCH)
+			g->scene->camera.dir.x = MINPITCH;
+		else if (g->scene->camera.dir.x > MAXPITCH)
+			g->scene->camera.dir.x = MAXPITCH;
 	}
 	else
 	{
@@ -33,16 +38,18 @@ void	left_on(void *general)
 void	up_on(void *general)
 {
 	t_general	*g;
-	t_vec3		movement_vector;
 	float		*y;
-
+	
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		movement_vector = vec3_scale(g->scene->camera.dir, STEPS);
-		g->scene->camera.x += movement_vector.x;
-		g->scene->camera.y += movement_vector.y;
-		g->scene->camera.z += movement_vector.z;
+		g->scene->camera.x -= sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+		if (g->scene->camera.dir.x < MINPITCH)
+			g->scene->camera.dir.x = MINPITCH;
+		else if (g->scene->camera.dir.x > MAXPITCH)
+			g->scene->camera.dir.x = MAXPITCH;
 	}
 	else
 	{
@@ -61,6 +68,12 @@ void	right_on(void *general)
 	{
 		g->scene->camera.x += cos(g->scene->camera.y) * STEPS;
 		g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+		
+		if (g->scene->camera.dir.x < MINPITCH)
+			g->scene->camera.dir.x = MINPITCH;
+		else if (g->scene->camera.dir.x > MAXPITCH)
+			g->scene->camera.dir.x = MAXPITCH;
 	}
 	else
 	{
@@ -79,6 +92,12 @@ void	down_on(void *general)
 	{
 		g->scene->camera.x += sin(g->scene->camera.y) * STEPS;
 		g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+
+		if (g->scene->camera.dir.x < MINPITCH)
+			g->scene->camera.dir.x = MINPITCH;
+		else if (g->scene->camera.dir.x > MAXPITCH)
+			g->scene->camera.dir.x = MAXPITCH;
 	}
 	else
 	{

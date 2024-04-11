@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 21:18:40 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:11:14 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void	free_scene(t_scene *scene);
 
 # define RAY_LENGTH 1000.0F
 # define WIN_NAME_LEN 30
+#define MAXPITCH M_PI / 2 - 0.1
+#define MINPITCH -M_PI / 2 + 0.1
 
 #endif
