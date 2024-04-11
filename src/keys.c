@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:17:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 21:55:29 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:01:49 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	handle_keypress(int pressedKey, t_general *general)
 		general->special_key = Alt;
 	else if (pressedKey == SHIFT_LEFT_KEY)
 		general->special_key = Shift;
-	// else if(pressedKey == ENTER)
-	// 	serious_render();
 	else if (pressedKey == ESC)
 		close_x(general);
 	return (0);
@@ -48,7 +46,6 @@ int	handle_keyrelease(int releasedKey, t_general *general)
 	else if (releasedKey >= LEFT && releasedKey <= DOWN \
 	&& general->count > AT_LEAST)
 	{
-		printf("Rilascio..\n\nRENDERING\n\n");
 		general->count = 0;
 	}
 	return (0);

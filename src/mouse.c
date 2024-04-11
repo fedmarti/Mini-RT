@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:11:58 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 01:24:12 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:03:53 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_shape	*select_item(t_vec3 raydir, t_scene *scene)
 		if (temp_hit.type != Void_shape && temp_hit.t < rayhit.t)
 			rayhit = temp_hit;
 	}
-	// g->selected_type = rayhit.type;
 	return (rayhit.target);
 }
 

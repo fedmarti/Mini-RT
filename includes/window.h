@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:41:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 01:37:30 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:02:53 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "minirt.h"
 # include "viewport.h"
-#include <FL/math.h>
 # define WIN_WIDTH 480.0f
 # define WIN_HEIGHT 260.0f
 # define STEPS 1

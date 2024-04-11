@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:29:41 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 00:17:30 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:05:07 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static int	validate_object_tokens(t_list *tokens)
 		tokens = tokens->next;
 	}
 	return ((!tokens || ((t_token *)tokens->content)->type == ObjType) \
-	&&  types_to_match[i] == eNull);
+	&& types_to_match[i] == eNull);
 }
 
 static int	valid_file_content(t_list *tokens)

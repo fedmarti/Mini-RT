@@ -6,7 +6,7 @@
 /*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:35:42 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/11 10:12:06 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:06:39 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	left_on(void *general)
 {
 	t_general	*g;
 	float		*x;
-	
+
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x -= cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+		g->scene->camera.x += sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
 		if (g->scene->camera.dir.x < MINPITCH)
 			g->scene->camera.dir.x = MINPITCH;
 		else if (g->scene->camera.dir.x > MAXPITCH)
@@ -39,13 +39,13 @@ void	up_on(void *general)
 {
 	t_general	*g;
 	float		*y;
-	
+
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x -= sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
+		g->scene->camera.x -= cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
 		if (g->scene->camera.dir.x < MINPITCH)
 			g->scene->camera.dir.x = MINPITCH;
 		else if (g->scene->camera.dir.x > MAXPITCH)
@@ -66,10 +66,9 @@ void	right_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x += cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
-		
+		g->scene->camera.x -= sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
 		if (g->scene->camera.dir.x < MINPITCH)
 			g->scene->camera.dir.x = MINPITCH;
 		else if (g->scene->camera.dir.x > MAXPITCH)
@@ -90,10 +89,9 @@ void	down_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x += sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.y = fmod(g->scene->camera.dir.y, 2 * M_PI);
-
+		g->scene->camera.x += cos(g->scene->camera.y) * STEPS;
+		g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
+		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
 		if (g->scene->camera.dir.x < MINPITCH)
 			g->scene->camera.dir.x = MINPITCH;
 		else if (g->scene->camera.dir.x > MAXPITCH)
