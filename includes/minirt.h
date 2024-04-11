@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:59:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 17:11:20 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/11 19:31:43 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_scene(t_scene *scene);
 # define WIN_NAME_LEN 30
 # define MAXPITCH 1.470796327
 # define MINPITCH -1.470796327
-# define ROTATE_SPEED 0.015f
+# define ROTATE_SPEED 0.03f
 # define MAX_SHAPE_SIZE 1000.0f
 
 #endif

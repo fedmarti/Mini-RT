@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrow_alted.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:26:22 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/11 17:04:23 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/12 00:06:15 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,67 @@
 void	alt_left_on(void *general)
 {
 	t_general	*g;
+	t_vec3		*v;
 
 	g = (t_general *)general;
-	if (g->selected == NULL || g->selected->type == Sphere)
-		g->scene->camera.dir.y += ROTATE_SPEED;
+	if (g->selected == NULL)
+		v = &g->scene->camera.dir;
+	else if (g->selected->type == Cylinder)
+		v = &g->selected->shape.cylinder.normal;
+	else if (g->selected->type == Plane)
+		v = &g->selected->shape.plane.normal;
 	else
-		*((float *)g->selected + 4) += -ROTATE_SPEED;
+		v = &g->scene->camera.dir;
+	*v = vec3_normalize(euler_rotate_zyx(*v, 0, 0, -ROTATE_SPEED));
 }
 
 void	alt_up_on(void *general)
 {
 	t_general	*g;
+	t_vec3		*v;
 
 	g = (t_general *)general;
-	if (g->selected == NULL || g->selected->type == Sphere)
-	{
-		g->scene->camera.dir.x -= ROTATE_SPEED;
-	}
+	if (g->selected == NULL)
+		v = &g->scene->camera.dir;
+	else if (g->selected->type == Cylinder)
+		v = &g->selected->shape.cylinder.normal;
+	else if (g->selected->type == Plane)
+		v = &g->selected->shape.plane.normal;
 	else
-		*((float *)g->selected + 5) += ROTATE_SPEED;
+		v = &g->scene->camera.dir;
+	*v = vec3_normalize(euler_rotate_zyx(*v, 0, ROTATE_SPEED, 0));
 }
 
 void	alt_right_on(void *general)
 {
 	t_general	*g;
+	t_vec3		*v;
 
 	g = (t_general *)general;
-	if (g->selected == NULL || g->selected->type == Sphere)
-		g->scene->camera.dir.y -= ROTATE_SPEED;
+	if (g->selected == NULL)
+		v = &g->scene->camera.dir;
+	else if (g->selected->type == Cylinder)
+		v = &g->selected->shape.cylinder.normal;
+	else if (g->selected->type == Plane)
+		v = &g->selected->shape.plane.normal;
 	else
-		*((float *)g->selected + 4) += ROTATE_SPEED;
+		v = &g->scene->camera.dir;
+	*v = vec3_normalize(euler_rotate_zyx(*v, 0.0f, 0.0f, ROTATE_SPEED));
 }
 
 void	alt_down_on(void *general)
 {
 	t_general	*g;
+	t_vec3		*v;
 
 	g = (t_general *)general;
-	if (g->selected == NULL || g->selected->type == Sphere)
-		g->scene->camera.dir.x += ROTATE_SPEED;
+	if (g->selected == NULL)
+		v = &g->scene->camera.dir;
+	else if (g->selected->type == Cylinder)
+		v = &g->selected->shape.cylinder.normal;
+	else if (g->selected->type == Plane)
+		v = &g->selected->shape.plane.normal;
 	else
-		*((float *)g->selected + 5) += -ROTATE_SPEED;
+		v = &g->scene->camera.dir;
+	*v = vec3_normalize(euler_rotate_zyx(*v, 0, -ROTATE_SPEED, 0));
 }

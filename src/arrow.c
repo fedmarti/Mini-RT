@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrow.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:35:42 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/11 17:06:39 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/11 21:17:25 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@ void	left_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x += sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.z -= cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
-		if (g->scene->camera.dir.x < MINPITCH)
-			g->scene->camera.dir.x = MINPITCH;
-		else if (g->scene->camera.dir.x > MAXPITCH)
-			g->scene->camera.dir.x = MAXPITCH;
+		g->scene->camera.x -= cos(g->scene->camera.dir.y) * STEPS;
+		g->scene->camera.z -= sin(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
@@ -38,23 +33,18 @@ void	left_on(void *general)
 void	up_on(void *general)
 {
 	t_general	*g;
-	float		*y;
+	float		*z;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x -= cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.z -= sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
-		if (g->scene->camera.dir.x < MINPITCH)
-			g->scene->camera.dir.x = MINPITCH;
-		else if (g->scene->camera.dir.x > MAXPITCH)
-			g->scene->camera.dir.x = MAXPITCH;
+		g->scene->camera.x -= sin(g->scene->camera.dir.y) * STEPS;
+		g->scene->camera.z += cos(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
-		pointer_to_position(g->selected, NULL, &y, NULL);
-		*y += STEPS;
+		pointer_to_position(g->selected, NULL, NULL, &z);
+		*z += STEPS;
 	}
 }
 
@@ -66,13 +56,8 @@ void	right_on(void *general)
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x -= sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.z += cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
-		if (g->scene->camera.dir.x < MINPITCH)
-			g->scene->camera.dir.x = MINPITCH;
-		else if (g->scene->camera.dir.x > MAXPITCH)
-			g->scene->camera.dir.x = MAXPITCH;
+		g->scene->camera.x += cos(g->scene->camera.dir.y) * STEPS;
+		g->scene->camera.z += sin(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
@@ -84,22 +69,17 @@ void	right_on(void *general)
 void	down_on(void *general)
 {
 	t_general	*g;
-	float		*y;
+	float		*z;
 
 	g = (t_general *)general;
 	if (g->selected == NULL)
 	{
-		g->scene->camera.x += cos(g->scene->camera.y) * STEPS;
-		g->scene->camera.z += sin(g->scene->camera.y) * STEPS;
-		g->scene->camera.dir.y = fmod(g->scene->camera.dir.y, 2.0 * M_PI);
-		if (g->scene->camera.dir.x < MINPITCH)
-			g->scene->camera.dir.x = MINPITCH;
-		else if (g->scene->camera.dir.x > MAXPITCH)
-			g->scene->camera.dir.x = MAXPITCH;
+		g->scene->camera.x += sin(g->scene->camera.dir.y) * STEPS;
+		g->scene->camera.z -= cos(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
-		pointer_to_position(g->selected, NULL, &y, NULL);
-		*y -= STEPS;
+		pointer_to_position(g->selected, NULL, NULL, &z);
+		*z -= STEPS;
 	}
 }

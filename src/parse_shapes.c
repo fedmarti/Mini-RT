@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:25:56 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 22:08:51 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 21:11:37 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_parsing.h"
+#include "geometry_3d.h"
 #include <math.h>
 //nt ns nt
 

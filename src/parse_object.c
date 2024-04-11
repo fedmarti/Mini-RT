@@ -6,11 +6,12 @@
 /*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:44:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/02 23:21:05 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/11 21:11:42 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_parsing.h"
+#include "geometry_3d.h"
 #include <math.h>
 
 void	parse_triplet(t_trip_interface interface, t_list *token)
