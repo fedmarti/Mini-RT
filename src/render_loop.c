@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:00:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 23:01:13 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/13 17:05:24 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	render(t_scene *scene, t_viewport viewport, t_window *program)
 int	render_loop(t_general *general)
 {
 	render(general->scene, general->viewport, &general->program);
-	// general->scene->camera.dir.x = fmax(MINPITCH, \
+	// general->scene->camera.dir.x = fmax(MINPITCH, 
 	// fmin(MAXPITCH, general->scene->camera.dir.x));
 	// printf("%f\n", vec3_length(general->scene->camera.dir));
 	t_vec3	*dir = &general->scene->camera.dir; 
