@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:00:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/13 17:05:24 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:05:58 by shhuang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	rotate_raydir(t_vec3 *raydir, t_vec3 camera)
+void rotate_raydir(t_vec3 *raydir, t_vec3 camera)
 {
-	t_vec3	rotated_y;
-	t_vec3	rotated_x;
+    t_vec3 rotated_y;
+    t_vec3 rotated_x;
 
-	rotated_x = (t_vec3)
+    rotated_y = (t_vec3)
 	{
-		raydir->x,
-		raydir->y * cos(camera.x) - raydir->z * sin(camera.x),
-		raydir->y * sin(camera.x) + raydir->z * cos(camera.x)
-	};
-	rotated_y = (t_vec3)
+        raydir->x * cos(camera.y) + raydir->z * sin(camera.y),
+        raydir->y,
+        -raydir->x * sin(camera.y) + raydir->z * cos(camera.y)
+    };
+    rotated_x = (t_vec3)
 	{
-		rotated_x.x * cos(camera.y) - rotated_x.z * sin(camera.y),
-		rotated_x.y,
-		rotated_x.x * sin(camera.y) + rotated_x.z * cos(camera.y)
-	};
-	*raydir = (t_vec3)vec3_normalize(rotated_y);
+        rotated_y.x,
+        rotated_y.y * cos(camera.x) - rotated_y.z * sin(camera.x),
+        rotated_y.y * sin(camera.x) + rotated_y.z * cos(camera.x)
+    };
+    *raydir = (t_vec3)vec3_normalize(rotated_x);
 }
 
 void	render(t_scene *scene, t_viewport viewport, t_window *program)
