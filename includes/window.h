@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:41:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 17:02:53 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/15 00:54:57 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int			loop_light(t_scene *scene, t_vec3 hit_point, t_vec3 norm, \
 int			apply_ambient_light(int color, float intensity, \
 			unsigned int ambientColor);
 t_hit		hit_shape(t_shape	*obj, t_ray *ray, enum e_cyl_hit *flag);
-void		rotate_raydir(t_vec3 *raydir, t_vec3 camera);
+void		rotate_raydir(t_vec3 *raydir, t_camera *camera);
 t_vec3		vec3_invert(t_vec3 v);
 // void move_obj(float *val, enum e_plus_minus sign);
 #endif

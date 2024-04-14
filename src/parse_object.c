@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:44:40 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 21:11:42 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/14 23:32:34 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,15 @@ t_camera	camera_init(t_list *tokens)
 	interface.y = &camera.dir.y;
 	interface.z = &camera.dir.z;
 	parse_triplet(interface, tokens->next);
-	len = sqrt((camera.dir.x * camera.dir.x) + (camera.dir.y \
-	* camera.dir.y) + (camera.dir.z * camera.dir.z));
+	len = vec3_length(camera.dir);
 	if (len == 0)
 	{
 		camera.dir.z = 1;
 		len = 1;
 	}
-	camera.dir.x /= len;
-	camera.dir.y /= len;
-	camera.dir.z /= len;
+	vec3_scale(camera.dir, 1 / len);
 	camera.fov_degrees = ft_atof(((t_token *)tokens->next->next->content)->str);
+	get_spherical_coordinates(&camera.theta, &camera.phi, camera.dir);
 	return (camera);
 }
 

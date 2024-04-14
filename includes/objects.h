@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 21:10:42 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 00:17:53 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
 # define NOBJECTTYPES 6
+
+typedef float	t_radians;
+typedef float	t_degrees;
 
 typedef struct s_vector3d
 {
@@ -38,6 +41,8 @@ typedef struct s_plane
 	float			z;
 	t_vec3			normal;
 	unsigned int	color;
+	t_radians		theta;
+	t_radians		phi;
 }	t_plane;
 
 typedef struct s_sphere
@@ -58,6 +63,8 @@ typedef struct s_cylinder
 	float			diameter;
 	float			height;
 	unsigned int	color;
+	t_radians		theta;
+	t_radians		phi;
 }	t_cylinder;
 
 union u_shape
@@ -92,12 +99,13 @@ typedef struct s_light_point
 
 typedef struct s_camera
 {
-	float	x;
-	float	y;
-	float	z;
-	t_vec3	dir;
-	float	fov_degrees;
-
+	float		x;
+	float		y;
+	float		z;
+	t_vec3		dir;
+	float		fov_degrees;
+	t_radians	theta;
+	t_radians	phi;
 }	t_camera;
 
 typedef struct s_scene
@@ -115,5 +123,7 @@ t_vec3	get_shape_position(t_shape *shape);
 // if any of the double pointers are not null they will be set to the pointers 
 //of the shape structure
 void	pointer_to_position(t_shape	*shape, float **x, float **y, float **z);
+void	pointer_to_orientation(t_shape *shape, \
+		t_vec3 **normal, t_radians **theta, t_radians **phi);
 
 #endif

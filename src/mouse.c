@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 21:11:58 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 17:03:53 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/15 00:55:05 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vec3	get_raydir(int x, int y, t_general *g)
 	view_y = -(y - g->viewport.image_height / 2.0) \
 	* (g->viewport.viewport_height / g->viewport.image_height);
 	actual_raydir = (t_vec3){view_x, view_y, 1.0};
-	rotate_raydir(&actual_raydir, g->scene->camera.dir);
+	rotate_raydir(&actual_raydir, &g->scene->camera);
 	return (actual_raydir);
 }
 
