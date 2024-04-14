@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:00:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 01:30:00 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 01:52:56 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	rotate_raydir(t_vec3 *raydir, t_camera *camera)
 {
-	t_vec3	rotated_y;
-	t_vec3	rotated_x;
+    t_vec3 rotated_y;
+    t_vec3 rotated_x;
 
-	rotated_x = (t_vec3)
+    rotated_y = (t_vec3)
 	{
 		raydir->x,
 		raydir->y * cos(camera->theta - M_PI_2) - \
