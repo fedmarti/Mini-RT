@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 00:50:48 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 03:02:47 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_vec3	euler_rotate_zyx(t_vec3	vec, t_radians a, t_radians b, t_radians c)
 	return (new_v);
 }
 
+//sets spherical coordinates (theta, phi) from vector v
 void	get_spherical_coordinates(t_radians *theta, t_radians *phi, t_vec3 v)
 {
 	float	radius;
@@ -60,6 +61,7 @@ void	get_spherical_coordinates(t_radians *theta, t_radians *phi, t_vec3 v)
 	printf("theta: %f, phi: %f\n", *theta, *phi);
 }
 
+//returns a 3Dvector from spherical coordinates 
 t_vec3	vec3_from_sp(t_radians theta, t_radians phi, float len)
 {
 	t_vec3	v;

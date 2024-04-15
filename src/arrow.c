@@ -6,12 +6,14 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:35:42 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/15 01:36:08 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 02:47:45 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+//takes movement vector and uses it to determine in which direction the camera 
+//will move using spherical coordinates but ignoring the theta angle
 static void	move_cam(t_camera *camera, t_vec3 mov_dir)
 {
 	t_vec3	movement;
@@ -42,8 +44,6 @@ void	left_on(void *general)
 	if (g->selected == NULL)
 	{
 		move_cam(&g->scene->camera, (t_vec3){-1, 0, 0});
-		// g->scene->camera.x -= cos(g->scene->camera.dir.y) * STEPS;
-		// g->scene->camera.z -= sin(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
@@ -61,8 +61,6 @@ void	up_on(void *general)
 	if (g->selected == NULL)
 	{
 		move_cam(&g->scene->camera, (t_vec3){0, 0, 1});
-		// g->scene->camera.x -= sin(g->scene->camera.dir.y) * STEPS;
-		// g->scene->camera.z += cos(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
@@ -80,8 +78,6 @@ void	right_on(void *general)
 	if (g->selected == NULL)
 	{
 		move_cam(&g->scene->camera, (t_vec3){1, 0, 0});
-		// g->scene->camera.x += cos(g->scene->camera.dir.y) * STEPS;
-		// g->scene->camera.z += sin(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{
@@ -99,8 +95,6 @@ void	down_on(void *general)
 	if (g->selected == NULL)
 	{
 		move_cam(&g->scene->camera, (t_vec3){0, 0, -1});
-		// g->scene->camera.x += sin(g->scene->camera.dir.y) * STEPS;
-		// g->scene->camera.z -= cos(g->scene->camera.dir.y) * STEPS;
 	}
 	else
 	{

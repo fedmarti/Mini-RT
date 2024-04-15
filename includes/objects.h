@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 22:11:57 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 00:17:53 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 02:20:54 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ t_vec3	get_shape_position(t_shape *shape);
 // if any of the double pointers are not null they will be set to the pointers 
 //of the shape structure
 void	pointer_to_position(t_shape	*shape, float **x, float **y, float **z);
+
+//takes a shape and fills and sets the given pointers to its attributes
 void	pointer_to_orientation(t_shape *shape, \
 		t_vec3 **normal, t_radians **theta, t_radians **phi);
 

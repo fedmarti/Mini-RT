@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fedmarti <fedmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:25:56 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/11 21:11:37 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 02:41:02 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_plane	plane_init(t_list *tokens)
 	plane.normal.y /= len;
 	plane.normal.z /= len;
 	plane.color = parse_color(tokens->next->next);
+	get_spherical_coordinates(&plane.theta, &plane.phi, plane.normal);
 	return (plane);
 }
 
@@ -70,6 +71,7 @@ t_cylinder	cylinder_init(t_list *tokens)
 	tokens = tokens->next->next->next;
 	cylinder.height = ft_atof(((t_token *)tokens->content)->str);
 	cylinder.color = parse_color(tokens->next);
+	get_spherical_coordinates(&cylinder.theta, &cylinder.phi, cylinder.normal);
 	return (cylinder);
 }
 

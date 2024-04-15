@@ -6,18 +6,20 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 22:00:24 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 01:54:01 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 02:53:46 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+//takes a raydir vector and rotates it according to camera orientation
+//applying rotation matrices using the angles from the spherical coor. system
 void	rotate_raydir(t_vec3 *raydir, t_camera *camera)
 {
-    t_vec3 rotated_y;
-    t_vec3 rotated_x;
+	t_vec3	rotated_y;
+	t_vec3	rotated_x;
 
-    rotated_x = (t_vec3)
+	rotated_x = (t_vec3)
 	{
 		raydir->x,
 		raydir->y * cos(camera->theta - M_PI_2) - \
@@ -34,6 +36,8 @@ void	rotate_raydir(t_vec3 *raydir, t_camera *camera)
 	*raydir = (t_vec3)vec3_normalize(rotated_y);
 }
 
+//creates a rectangular grid onto which the rendered image will be projected
+//iterates through each cell and casts a ray for each one
 void	viewport_cast_rays(t_scene *scene, t_viewport *vp, int *img_data)
 {
 	float	viewport_x;
@@ -71,10 +75,5 @@ void	render(t_scene *scene, t_viewport *viewport, t_window *program)
 int	render_loop(t_general *general)
 {
 	render(general->scene, &general->viewport, &general->program);
-	// general->scene->camera.dir.x = fmax(MINPITCH, 
-	// fmin(MAXPITCH, general->scene->camera.dir.x));
-	// printf("%f\n", vec3_length(general->scene->camera.dir));
-	// t_vec3	*dir = &general->scene->camera.dir; 
-	// printf("dir.x %f dir.y %f dir.z %f\n", dir->x, dir->y, dir->z);
 	return (0);
 }

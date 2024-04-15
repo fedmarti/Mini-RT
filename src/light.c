@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:02:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/05 21:06:02 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 03:14:49 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_vec3	int_to_vec3(int color)
 	});
 }
 
+//sends a ray from the light to the hit_point in order to check
+//if the object is the closest to the light
 bool	is_light_obstructed(t_light *light, t_scene *scene, \
 t_shape *object, t_vec3 hit_point)
 {
@@ -52,6 +54,7 @@ t_shape *object, t_vec3 hit_point)
 	return (closest.target != object);
 }
 
+//calculates how an object is affected by lights and calculates its color
 int	loop_light(t_scene *scene, t_vec3 hit_point, t_vec3 norm, t_shape *shape)
 {
 	float	rgb[3];
