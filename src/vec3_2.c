@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 23:12:13 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 03:02:47 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:39:01 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ void	get_spherical_coordinates(t_radians *theta, t_radians *phi, t_vec3 v)
 	if (!v.x && !v.z)
 	{
 		*phi = 0;
-		printf("theta: %f, phi: %f\n", *theta, *phi);
 		return ;
 	}
 	*phi = ft_sign_d(v.z) * acosf(v.x / sqrt(v.x * v.x + v.z * v.z));
-	printf("theta: %f, phi: %f\n", *theta, *phi);
 }
 
 //returns a 3Dvector from spherical coordinates 
