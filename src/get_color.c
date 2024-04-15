@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:59:38 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/15 03:10:30 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 05:22:47 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,19 @@ t_hit	closest_hit(t_scene	*scene, t_ray *ray, enum e_cyl_hit *flag)
 	unsigned short	i;
 	t_hit			temp_hit;
 	t_hit			rayhit;
+	enum e_cyl_hit	temp_flag;
 
 	rayhit = (t_hit){INFINITY, NULL, Void_shape};
 	i = 0;
 	while (i < scene->shape_n)
 	{
-		temp_hit = hit_shape(&scene->shapes[i], ray, flag);
+		temp_hit = hit_shape(&scene->shapes[i], ray, &temp_flag);
 		if (temp_hit.type != Void_shape && temp_hit.t < rayhit.t)
+		{
 			rayhit = temp_hit;
+			if (flag)
+				*flag = temp_flag;
+		}
 		i++;
 	}
 	return (rayhit);
