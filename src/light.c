@@ -6,7 +6,7 @@
 /*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:02:47 by fedmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 03:14:49 by fedmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:28:51 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,25 @@ t_vec3	calculate_lighting(t_vec3 hit_point, t_vec3 normal, \
 t_vec3 base_col, t_light light)
 {
 	t_vec3	light_dir;
+	float	intensity;
 	float	diff;
+	float	dist;
 
+	dist = distance((t_vec3){light.x, light.y, light.z}, hit_point);
+	intensity = MAX_LIGHT_RANGE * light.brightness * light.brightness;
+	if (dist * intensity > MIN_LIGHT_RANGE)
+	{
+		intensity /= (dist * dist);
+	}
 	light_dir = vec3_normalize(vec3_substract((t_vec3) \
 	{light.x, light.y, light.z}, hit_point));
 	diff = fmax(dot(normal, light_dir), 0.0);
 	return ((t_vec3) \
-	{base_col.x * light.brightness * diff \
+	{base_col.x * intensity * diff \
 		* (float)(*((unsigned char *)&light.color + 2)) / 255.0f,
-		base_col.y * light.brightness * diff \
+		base_col.y * intensity * diff \
 		* (float)(*((unsigned char *)&light.color + 1)) / 255.0f,
-		base_col.z * light.brightness * diff \
+		base_col.z * intensity * diff \
 		* (float)(*((unsigned char *)&light.color + 0)) / 255.0f});
 }
 
@@ -51,7 +59,8 @@ t_shape *object, t_vec3 hit_point)
 	(vec3_substract(hit_point, (t_vec3){light->x, light->y, light->z}));
 	ray.origin = (t_vec3){light->x, light->y, light->z};
 	closest = closest_hit(scene, &ray, NULL);
-	return (closest.target != object);
+	return (closest.target != object \
+	|| closest.t > MAX_LIGHT_RANGE * light->brightness);
 }
 
 //calculates how an object is affected by lights and calculates its color
