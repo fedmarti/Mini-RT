@@ -81,11 +81,11 @@ $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
 
 ##compiles debug object files in the build directory, creates the directory if needed
-$(OBJ_PATH)$(DEBUG_PREFIX)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)$(DEBUG_PREFIX)%.o: $(SRC_PATH)%.c $(OBJ_PATH)
 	$(CC) $(CFLAGS) -g -c $< -o $@ $(INCLUDES)
 
 ##compiles object files in the build directory, creates the directory if needed
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(OBJ_PATH)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 ##makes libft
