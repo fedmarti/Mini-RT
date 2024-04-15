@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shhuang <dsheng1993@gmail.com>             +#+  +:+       +#+        */
+/*   By: fedmarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:31 by shhuang           #+#    #+#             */
-/*   Updated: 2024/04/05 17:52:34 by shhuang          ###   ########.fr       */
+/*   Updated: 2024/04/15 02:08:27 by fedmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ t_ray *ray, float t_base[2])
 				ray->t = t_base[i];
 				hit = true;
 				if (flag && i == 0)
-					*flag = Base_Top;
-				else if (flag)
 					*flag = Base_Bottom;
+				else if (flag)
+					*flag = Base_Top;
 			}
 		}
 	}
